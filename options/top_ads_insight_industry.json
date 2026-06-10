@@ -1,0 +1,37 @@
+[
+    {
+        "id": "18000000000",
+        "value": "18000000000",
+        "label": "Household Products"
+    },
+    {
+        "id": "14000000000",
+        "value": "14000000000",
+        "label": "Beauty & Personal Care"
+    },
+    {
+        "id": "22000000000",
+        "value": "22000000000",
+        "label": "Apparel & Accessories"
+    },
+    {
+        "id": "29000000000",
+        "value": "29000000000",
+        "label": "Health"
+    },
+    {
+        "id": "16000000000",
+        "value": "16000000000",
+        "label": "Appliances"
+    },
+    {
+        "id": "28000000000",
+        "value": "28000000000",
+        "label": "Sports & Outdoor"
+    },
+    {
+        "id": "20000000000",
+        "value": "20000000000",
+        "label": "Apps"
+    }
+]

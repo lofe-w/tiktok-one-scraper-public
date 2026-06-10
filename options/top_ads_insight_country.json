@@ -1,0 +1,77 @@
+[
+    {
+        "id": "",
+        "value": "",
+        "label": "All regions"
+    },
+    {
+        "id": "US",
+        "value": "US",
+        "label": "United States"
+    },
+    {
+        "id": "JP",
+        "value": "JP",
+        "label": "Japan"
+    },
+    {
+        "id": "ID",
+        "value": "ID",
+        "label": "Indonesia"
+    },
+    {
+        "id": "TH",
+        "value": "TH",
+        "label": "Thailand"
+    },
+    {
+        "id": "MY",
+        "value": "MY",
+        "label": "Malaysia"
+    },
+    {
+        "id": "VN",
+        "value": "VN",
+        "label": "Vietnam"
+    },
+    {
+        "id": "GB",
+        "value": "GB",
+        "label": "United Kingdom of Great Britain and Northern Ireland"
+    },
+    {
+        "id": "FR",
+        "value": "FR",
+        "label": "France"
+    },
+    {
+        "id": "PH",
+        "value": "PH",
+        "label": "Philippines"
+    },
+    {
+        "id": "SA",
+        "value": "SA",
+        "label": "Saudi Arabia"
+    },
+    {
+        "id": "ZA",
+        "value": "ZA",
+        "label": "South Africa"
+    },
+    {
+        "id": "KR",
+        "value": "KR",
+        "label": "Korea (Republic of)"
+    },
+    {
+        "id": "ES",
+        "value": "ES",
+        "label": "Spain"
+    },
+    {
+        "id": "MX",
+        "value": "MX",
+        "label": "Mexico"
+    }
+]

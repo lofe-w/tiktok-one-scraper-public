@@ -1,0 +1,17 @@
+[
+    {
+        "id": "7",
+        "value": "7",
+        "label": "7 days"
+    },
+    {
+        "id": "30",
+        "value": "30",
+        "label": "30 days"
+    },
+    {
+        "id": "180",
+        "value": "180",
+        "label": "180 days"
+    }
+]

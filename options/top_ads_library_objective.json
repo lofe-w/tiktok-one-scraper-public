@@ -1,0 +1,57 @@
+[
+    {
+        "id": "1",
+        "value": "1",
+        "label": "Traffic"
+    },
+    {
+        "id": "2",
+        "value": "2",
+        "label": "App Installs"
+    },
+    {
+        "id": "3",
+        "value": "3",
+        "label": "Conversions"
+    },
+    {
+        "id": "4",
+        "value": "4",
+        "label": "Video Views"
+    },
+    {
+        "id": "5",
+        "value": "5",
+        "label": "Reach"
+    },
+    {
+        "id": "6",
+        "value": "6",
+        "label": "Catalog Sales"
+    },
+    {
+        "id": "8",
+        "value": "8",
+        "label": "Lead Generation"
+    },
+    {
+        "id": "9",
+        "value": "9",
+        "label": "Engagement"
+    },
+    {
+        "id": "14",
+        "value": "14",
+        "label": "Shop"
+    },
+    {
+        "id": "15",
+        "value": "15",
+        "label": "Product Sales"
+    },
+    {
+        "id": "16",
+        "value": "16",
+        "label": "App Promotion"
+    }
+]
