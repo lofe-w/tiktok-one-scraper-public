@@ -1,0 +1,407 @@
+[
+    {
+        "id": "DZ",
+        "value": "DZ",
+        "label": "DZ"
+    },
+    {
+        "id": "AR",
+        "value": "AR",
+        "label": "AR"
+    },
+    {
+        "id": "AU",
+        "value": "AU",
+        "label": "AU"
+    },
+    {
+        "id": "AT",
+        "value": "AT",
+        "label": "AT"
+    },
+    {
+        "id": "AZ",
+        "value": "AZ",
+        "label": "AZ"
+    },
+    {
+        "id": "BH",
+        "value": "BH",
+        "label": "BH"
+    },
+    {
+        "id": "BD",
+        "value": "BD",
+        "label": "BD"
+    },
+    {
+        "id": "BY",
+        "value": "BY",
+        "label": "BY"
+    },
+    {
+        "id": "BE",
+        "value": "BE",
+        "label": "BE"
+    },
+    {
+        "id": "BO",
+        "value": "BO",
+        "label": "BO"
+    },
+    {
+        "id": "BR",
+        "value": "BR",
+        "label": "BR"
+    },
+    {
+        "id": "BG",
+        "value": "BG",
+        "label": "BG"
+    },
+    {
+        "id": "KH",
+        "value": "KH",
+        "label": "KH"
+    },
+    {
+        "id": "CA",
+        "value": "CA",
+        "label": "CA"
+    },
+    {
+        "id": "CL",
+        "value": "CL",
+        "label": "CL"
+    },
+    {
+        "id": "CO",
+        "value": "CO",
+        "label": "CO"
+    },
+    {
+        "id": "CR",
+        "value": "CR",
+        "label": "CR"
+    },
+    {
+        "id": "HR",
+        "value": "HR",
+        "label": "HR"
+    },
+    {
+        "id": "CY",
+        "value": "CY",
+        "label": "CY"
+    },
+    {
+        "id": "CZ",
+        "value": "CZ",
+        "label": "CZ"
+    },
+    {
+        "id": "DK",
+        "value": "DK",
+        "label": "DK"
+    },
+    {
+        "id": "DO",
+        "value": "DO",
+        "label": "DO"
+    },
+    {
+        "id": "EC",
+        "value": "EC",
+        "label": "EC"
+    },
+    {
+        "id": "EG",
+        "value": "EG",
+        "label": "EG"
+    },
+    {
+        "id": "EE",
+        "value": "EE",
+        "label": "EE"
+    },
+    {
+        "id": "FI",
+        "value": "FI",
+        "label": "FI"
+    },
+    {
+        "id": "FR",
+        "value": "FR",
+        "label": "FR"
+    },
+    {
+        "id": "DE",
+        "value": "DE",
+        "label": "DE"
+    },
+    {
+        "id": "GR",
+        "value": "GR",
+        "label": "GR"
+    },
+    {
+        "id": "GT",
+        "value": "GT",
+        "label": "GT"
+    },
+    {
+        "id": "JO",
+        "value": "JO",
+        "label": "JO"
+    },
+    {
+        "id": "HU",
+        "value": "HU",
+        "label": "HU"
+    },
+    {
+        "id": "ID",
+        "value": "ID",
+        "label": "ID"
+    },
+    {
+        "id": "IQ",
+        "value": "IQ",
+        "label": "IQ"
+    },
+    {
+        "id": "IE",
+        "value": "IE",
+        "label": "IE"
+    },
+    {
+        "id": "IL",
+        "value": "IL",
+        "label": "IL"
+    },
+    {
+        "id": "IT",
+        "value": "IT",
+        "label": "IT"
+    },
+    {
+        "id": "JP",
+        "value": "JP",
+        "label": "JP"
+    },
+    {
+        "id": "KZ",
+        "value": "KZ",
+        "label": "KZ"
+    },
+    {
+        "id": "KE",
+        "value": "KE",
+        "label": "KE"
+    },
+    {
+        "id": "KW",
+        "value": "KW",
+        "label": "KW"
+    },
+    {
+        "id": "LV",
+        "value": "LV",
+        "label": "LV"
+    },
+    {
+        "id": "LB",
+        "value": "LB",
+        "label": "LB"
+    },
+    {
+        "id": "MY",
+        "value": "MY",
+        "label": "MY"
+    },
+    {
+        "id": "MX",
+        "value": "MX",
+        "label": "MX"
+    },
+    {
+        "id": "MA",
+        "value": "MA",
+        "label": "MA"
+    },
+    {
+        "id": "NL",
+        "value": "NL",
+        "label": "NL"
+    },
+    {
+        "id": "NZ",
+        "value": "NZ",
+        "label": "NZ"
+    },
+    {
+        "id": "NG",
+        "value": "NG",
+        "label": "NG"
+    },
+    {
+        "id": "NO",
+        "value": "NO",
+        "label": "NO"
+    },
+    {
+        "id": "OM",
+        "value": "OM",
+        "label": "OM"
+    },
+    {
+        "id": "PK",
+        "value": "PK",
+        "label": "PK"
+    },
+    {
+        "id": "PA",
+        "value": "PA",
+        "label": "PA"
+    },
+    {
+        "id": "PY",
+        "value": "PY",
+        "label": "PY"
+    },
+    {
+        "id": "PE",
+        "value": "PE",
+        "label": "PE"
+    },
+    {
+        "id": "PH",
+        "value": "PH",
+        "label": "PH"
+    },
+    {
+        "id": "PL",
+        "value": "PL",
+        "label": "PL"
+    },
+    {
+        "id": "PT",
+        "value": "PT",
+        "label": "PT"
+    },
+    {
+        "id": "PR",
+        "value": "PR",
+        "label": "PR"
+    },
+    {
+        "id": "QA",
+        "value": "QA",
+        "label": "QA"
+    },
+    {
+        "id": "LT",
+        "value": "LT",
+        "label": "LT"
+    },
+    {
+        "id": "RO",
+        "value": "RO",
+        "label": "RO"
+    },
+    {
+        "id": "SA",
+        "value": "SA",
+        "label": "SA"
+    },
+    {
+        "id": "RS",
+        "value": "RS",
+        "label": "RS"
+    },
+    {
+        "id": "SG",
+        "value": "SG",
+        "label": "SG"
+    },
+    {
+        "id": "SK",
+        "value": "SK",
+        "label": "SK"
+    },
+    {
+        "id": "SI",
+        "value": "SI",
+        "label": "SI"
+    },
+    {
+        "id": "ZA",
+        "value": "ZA",
+        "label": "ZA"
+    },
+    {
+        "id": "KR",
+        "value": "KR",
+        "label": "KR"
+    },
+    {
+        "id": "ES",
+        "value": "ES",
+        "label": "ES"
+    },
+    {
+        "id": "LK",
+        "value": "LK",
+        "label": "LK"
+    },
+    {
+        "id": "SE",
+        "value": "SE",
+        "label": "SE"
+    },
+    {
+        "id": "CH",
+        "value": "CH",
+        "label": "CH"
+    },
+    {
+        "id": "TW",
+        "value": "TW",
+        "label": "TW"
+    },
+    {
+        "id": "TH",
+        "value": "TH",
+        "label": "TH"
+    },
+    {
+        "id": "TR",
+        "value": "TR",
+        "label": "TR"
+    },
+    {
+        "id": "AE",
+        "value": "AE",
+        "label": "AE"
+    },
+    {
+        "id": "GB",
+        "value": "GB",
+        "label": "GB"
+    },
+    {
+        "id": "US",
+        "value": "US",
+        "label": "US"
+    },
+    {
+        "id": "UY",
+        "value": "UY",
+        "label": "UY"
+    },
+    {
+        "id": "VN",
+        "value": "VN",
+        "label": "VN"
+    }
+]
