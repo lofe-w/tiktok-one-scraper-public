@@ -117,7 +117,7 @@ These settings are only used when `Target` is set to `top_ads_insight_formula_ma
 * **Sort by** `insight_formula_material_order_field`: (Required) Ranking metric. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-one-scraper-public/refs/heads/main/options/top_ads_insight_order_field.json)
 * **Formula ID** `insight_formula_material_formula_id`: (Required) Use `formulaList[].id` from `top_ads_insight_creative_approach`.
 * **Page** `insight_formula_material_page`: (Required) Page number.
-* **Limit** `insight_formula_material_limit`: (Required) Number of records per page.
+* **Limit** `insight_formula_material_limit`: (Required) Number of records per page. Valid range: `1` to `10000`.
 
 Use `itemList[].materialID` from this target as `insight_detail_material_id` when fetching a Top Ads Insight material detail.
 
@@ -133,7 +133,7 @@ These settings are only used when `Target` is set to `top_ads_insight_selling_po
 * **Sort by** `insight_selling_material_order_field`: (Required) Ranking metric. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-one-scraper-public/refs/heads/main/options/top_ads_insight_order_field.json)
 * **Selling point** `insight_selling_material_selling_point`: (Required) Use `SellingPoints[].sellingPointName` from `top_ads_insight_top20_selling_points`.
 * **Page** `insight_selling_material_page`: (Required) Page number.
-* **Limit** `insight_selling_material_limit`: (Required) Number of records per page.
+* **Limit** `insight_selling_material_limit`: (Required) Number of records per page. Valid range: `1` to `10000`.
 
 Use `itemList[].materialID` from this target as `insight_detail_material_id` when fetching a Top Ads Insight material detail.
 
@@ -159,7 +159,7 @@ These settings are only used when `Target` is set to `top_ads_library`.
 * **Likes percentile** `library_like_cnt_filter`: (Optional) Like count percentile filter. Leave empty for all percentiles. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-one-scraper-public/refs/heads/main/options/top_ads_library_like_cnt_filter.json)
 * **Sort by** `library_order_field`: (Required) Metric used to sort results. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-one-scraper-public/refs/heads/main/options/top_ads_library_order_field.json)
 * **Page** `library_page`: (Required) Page number.
-* **Limit** `library_limit`: (Required) Number of records per page.
+* **Limit** `library_limit`: (Required) Number of records per page. Valid range: `1` to `50`.
 
 Use `itemList[].materialID` from this target as `library_material_id` when fetching a Top Ads Library material detail.
 
