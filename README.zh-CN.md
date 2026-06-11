@@ -20,7 +20,7 @@
 
 * **Target** `target`：（必填）选择 TikTok One 数据源。
 
-  可选值：`top_ads_insight`、`top_ads_insight_creative_approach`、`top_ads_insight_selling_point_analysis`、`top_ads_insight_material_list`、`top_ads_insight_material_detail`、`top_ads_library`、`top_ads_library_material_detail`。
+  可选值：`top_ads_insight`、`top_ads_insight_creative_approach`、`top_ads_insight_selling_point_analysis`、`top_ads_insight_top20_selling_points`、`top_ads_insight_formula_material_list`、`top_ads_insight_selling_point_material_list`、`top_ads_insight_material_detail`、`top_ads_library`、`top_ads_library_material_detail`。
 
 * **Cookies** `cookies`：（必填）登录 TikTok One 后获取的认证 Cookie。获取方式：
 
@@ -28,48 +28,42 @@
 
 ### Top Ads Insight 配置
 
-当 `Target` 以 `top_ads_insight` 开头时使用这些参数。
+当 `Target` 为 `top_ads_insight` 时使用这些参数。
 
 * **Industry label** `insight_industry_label`：（必填）官方行业标签。[Options](https://raw.githubusercontent.com/lofe-w/tiktok-one-scraper-public/refs/heads/main/options/top_ads_insight_industry.json)
 * **Country code** `insight_country_code`：（必填）官方国家或地区筛选。空值表示 `All regions`。[Options](https://raw.githubusercontent.com/lofe-w/tiktok-one-scraper-public/refs/heads/main/options/top_ads_insight_country.json)
 * **Time range** `insight_time_range`：（必填）发布时间范围。[Options](https://raw.githubusercontent.com/lofe-w/tiktok-one-scraper-public/refs/heads/main/options/top_ads_insight_time_range.json)
 * **Sort by** `insight_order_field`：（必填）排序指标。[Options](https://raw.githubusercontent.com/lofe-w/tiktok-one-scraper-public/refs/heads/main/options/top_ads_insight_order_field.json)
 
-### Top Ads Insight - Selling Point Analysis
+### Top Ads Insight 单接口目标
 
-当 `Target` 为 `top_ads_insight_selling_point_analysis` 时使用这些参数。
+每个 Top Ads Insight 单接口目标在 Actor 输入中都有独立的行业、国家/地区、时间范围和排序字段。
 
-* **Category** `insight_category`：（可选）由 `top_ads_insight_selling_point_analysis` 返回的分类。留空时采集一级分类。
-
-### Top Ads Insight - Material List
-
-当 `Target` 为 `top_ads_insight_material_list` 时使用这些参数。
-
-* **Formula ID** `insight_formula_id`：（可选）由 `top_ads_insight_creative_approach` 返回的 Formula ID。
-* **Selling point** `insight_selling_point`：（可选）由 `top_ads_insight_selling_point_analysis` 返回的卖点。
-* **Page** `insight_page`：（必填）页码。每页数量由 Actor 内部固定。
-* **Exclude KA ads** `insight_exclude_ka`：（可选）从素材列表中排除 KA 广告。
+* `top_ads_insight_creative_approach`：采集创意方法公式。
+* `top_ads_insight_selling_point_analysis`：采集卖点分类。
+* `top_ads_insight_top20_selling_points`：需要 `insight_top20_category`，采集该分类下的卖点。
+* `top_ads_insight_formula_material_list`：需要 `insight_formula_material_formula_id`，并支持 `insight_formula_material_page` 和 `insight_formula_material_limit`。
+* `top_ads_insight_selling_point_material_list`：需要 `insight_selling_material_selling_point`，并支持 `insight_selling_material_page` 和 `insight_selling_material_limit`。
 
 ### Top Ads Insight - Material Detail
 
 当 `Target` 为 `top_ads_insight_material_detail` 时使用这些参数。
 
-* **Insight material ID** `insight_material_id`：（必填）由 `top_ads_insight_material_list` 返回的素材 ID。
+* **Insight material ID** `insight_detail_material_id`：（必填）由 Top Ads Insight materials 目标返回的素材 ID。
 
 ### Top Ads Library 配置
 
 当 `Target` 为 `top_ads_library` 时使用这些参数。
 
-* **Industry labels** `library_industry_label_list`：（可选）行业标签 ID。留空表示全部行业。
-* **Country codes** `library_country_code_list`：（可选）国家或地区代码。留空表示全部国家/地区。[Options](https://raw.githubusercontent.com/lofe-w/tiktok-one-scraper-public/refs/heads/main/options/top_ads_library_country.json)
+* **Industry label** `library_industry_label`：（可选）行业标签 ID。留空表示全部行业。[Options](https://raw.githubusercontent.com/lofe-w/tiktok-one-scraper-public/refs/heads/main/options/top_ads_library_industry.json)
+* **Country code** `library_country_code`：（可选）国家或地区代码。留空表示全部国家/地区。[Options](https://raw.githubusercontent.com/lofe-w/tiktok-one-scraper-public/refs/heads/main/options/top_ads_library_country.json)
 * **Time range** `library_time_range`：（必填）发布时间范围。[Options](https://raw.githubusercontent.com/lofe-w/tiktok-one-scraper-public/refs/heads/main/options/top_ads_library_time_range.json)
 * **Search word** `library_search_word`：（可选）按品牌、产品或创意关键词搜索。
-* **Objectives** `library_objective_list`：（可选）广告目标。留空表示全部目标。[Options](https://raw.githubusercontent.com/lofe-w/tiktok-one-scraper-public/refs/heads/main/options/top_ads_library_objective.json)
-* **Ad format** `library_ad_format`：（可选）广告形式筛选。留空表示全部形式。[Options](https://raw.githubusercontent.com/lofe-w/tiktok-one-scraper-public/refs/heads/main/options/top_ads_library_ad_format.json)
+* **Objective** `library_objective`：（可选）广告目标。留空表示全部目标。[Options](https://raw.githubusercontent.com/lofe-w/tiktok-one-scraper-public/refs/heads/main/options/top_ads_library_objective.json)
 * **Likes percentile** `library_like_cnt_filter`：（可选）点赞数分位筛选。留空表示全部分位。[Options](https://raw.githubusercontent.com/lofe-w/tiktok-one-scraper-public/refs/heads/main/options/top_ads_library_like_cnt_filter.json)
-* **Selling points** `library_selling_point_list`：（可选）卖点 ID 或名称。留空表示全部卖点。
 * **Sort by** `library_order_field`：（必填）结果排序指标。[Options](https://raw.githubusercontent.com/lofe-w/tiktok-one-scraper-public/refs/heads/main/options/top_ads_library_order_field.json)
-* **Page** `library_page`：（必填）页码。每页数量由 Actor 内部固定。
+* **Page** `library_page`：（必填）页码。
+* **Limit** `library_limit`：（必填）每页返回数量。
 
 ### Top Ads Library - Material Detail
 
@@ -83,8 +77,10 @@
 | --- | --- | --- |
 | `top_ads_insight` | 采集 Top Ads Insight 初始页面数据：概览、创意方法、分类，以及前几个分类下的卖点行。 | 0.002$ / fetched item |
 | `top_ads_insight_creative_approach` | 采集创意方法公式。 | 0.002$ / item |
-| `top_ads_insight_selling_point_analysis` | 采集卖点分类，或指定分类下的卖点。 | 0.002$ / item |
-| `top_ads_insight_material_list` | 按公式或卖点采集 Top Ads Insight 素材列表。 | 0.002$ / item |
+| `top_ads_insight_selling_point_analysis` | 采集卖点分类。 | 0.002$ / item |
+| `top_ads_insight_top20_selling_points` | 采集指定分类下的卖点。 | 0.002$ / item |
+| `top_ads_insight_formula_material_list` | 按公式采集 Top Ads Insight 素材列表。 | 0.002$ / item |
+| `top_ads_insight_selling_point_material_list` | 按卖点采集 Top Ads Insight 素材列表。 | 0.002$ / item |
 | `top_ads_insight_material_detail` | 采集单个 Top Ads Insight 素材详情。 | 0.002$ / time |
 | `top_ads_library` | 使用官方筛选项搜索 Top Ads Library 素材。 | 0.002$ / item |
 | `top_ads_library_material_detail` | 采集单个 Top Ads Library 素材详情。 | 0.002$ / time |
