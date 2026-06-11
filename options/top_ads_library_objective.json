@@ -7,7 +7,7 @@
     {
         "id": "2",
         "value": "2",
-        "label": "App Installs"
+        "label": "App Install"
     },
     {
         "id": "3",
@@ -17,7 +17,7 @@
     {
         "id": "4",
         "value": "4",
-        "label": "Video Views"
+        "label": "Video View"
     },
     {
         "id": "5",
@@ -25,33 +25,13 @@
         "label": "Reach"
     },
     {
-        "id": "6",
-        "value": "6",
-        "label": "Catalog Sales"
-    },
-    {
         "id": "8",
         "value": "8",
         "label": "Lead Generation"
     },
     {
-        "id": "9",
-        "value": "9",
-        "label": "Engagement"
-    },
-    {
-        "id": "14",
-        "value": "14",
-        "label": "Shop"
-    },
-    {
         "id": "15",
         "value": "15",
         "label": "Product Sales"
-    },
-    {
-        "id": "16",
-        "value": "16",
-        "label": "App Promotion"
     }
 ]

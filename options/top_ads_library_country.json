@@ -2,187 +2,187 @@
     {
         "id": "DZ",
         "value": "DZ",
-        "label": "DZ"
+        "label": "Algeria"
     },
     {
         "id": "AR",
         "value": "AR",
-        "label": "AR"
+        "label": "Argentina"
     },
     {
         "id": "AU",
         "value": "AU",
-        "label": "AU"
+        "label": "Australia"
     },
     {
         "id": "AT",
         "value": "AT",
-        "label": "AT"
+        "label": "Austria"
     },
     {
         "id": "AZ",
         "value": "AZ",
-        "label": "AZ"
+        "label": "Azerbaijan"
     },
     {
         "id": "BH",
         "value": "BH",
-        "label": "BH"
+        "label": "Bahrain"
     },
     {
         "id": "BD",
         "value": "BD",
-        "label": "BD"
+        "label": "Bangladesh"
     },
     {
         "id": "BY",
         "value": "BY",
-        "label": "BY"
+        "label": "Belarus"
     },
     {
         "id": "BE",
         "value": "BE",
-        "label": "BE"
+        "label": "Belgium"
     },
     {
         "id": "BO",
         "value": "BO",
-        "label": "BO"
+        "label": "Bolivia"
     },
     {
         "id": "BR",
         "value": "BR",
-        "label": "BR"
+        "label": "Brazil"
     },
     {
         "id": "BG",
         "value": "BG",
-        "label": "BG"
+        "label": "Bulgaria"
     },
     {
         "id": "KH",
         "value": "KH",
-        "label": "KH"
+        "label": "Cambodia"
     },
     {
         "id": "CA",
         "value": "CA",
-        "label": "CA"
+        "label": "Canada"
     },
     {
         "id": "CL",
         "value": "CL",
-        "label": "CL"
+        "label": "Chile"
     },
     {
         "id": "CO",
         "value": "CO",
-        "label": "CO"
+        "label": "Colombia"
     },
     {
         "id": "CR",
         "value": "CR",
-        "label": "CR"
+        "label": "Costa Rica"
     },
     {
         "id": "HR",
         "value": "HR",
-        "label": "HR"
+        "label": "Croatia"
     },
     {
         "id": "CY",
         "value": "CY",
-        "label": "CY"
+        "label": "Cyprus"
     },
     {
         "id": "CZ",
         "value": "CZ",
-        "label": "CZ"
+        "label": "Czech Republic"
     },
     {
         "id": "DK",
         "value": "DK",
-        "label": "DK"
+        "label": "Denmark"
     },
     {
         "id": "DO",
         "value": "DO",
-        "label": "DO"
+        "label": "Dominican Republic"
     },
     {
         "id": "EC",
         "value": "EC",
-        "label": "EC"
+        "label": "Ecuador"
     },
     {
         "id": "EG",
         "value": "EG",
-        "label": "EG"
+        "label": "Egypt"
     },
     {
         "id": "EE",
         "value": "EE",
-        "label": "EE"
+        "label": "Estonia"
     },
     {
         "id": "FI",
         "value": "FI",
-        "label": "FI"
+        "label": "Finland"
     },
     {
         "id": "FR",
         "value": "FR",
-        "label": "FR"
+        "label": "France"
     },
     {
         "id": "DE",
         "value": "DE",
-        "label": "DE"
+        "label": "Germany"
     },
     {
         "id": "GR",
         "value": "GR",
-        "label": "GR"
+        "label": "Greece"
     },
     {
         "id": "GT",
         "value": "GT",
-        "label": "GT"
+        "label": "Guatemala"
     },
     {
         "id": "JO",
         "value": "JO",
-        "label": "JO"
+        "label": "Jordan"
     },
     {
         "id": "HU",
         "value": "HU",
-        "label": "HU"
+        "label": "Hungary"
     },
     {
         "id": "ID",
         "value": "ID",
-        "label": "ID"
+        "label": "Indonesia"
     },
     {
         "id": "IQ",
         "value": "IQ",
-        "label": "IQ"
+        "label": "Iraq"
     },
     {
         "id": "IE",
         "value": "IE",
-        "label": "IE"
+        "label": "Ireland"
     },
     {
         "id": "IL",
         "value": "IL",
-        "label": "IL"
+        "label": "Israel"
     },
     {
         "id": "IT",
         "value": "IT",
-        "label": "IT"
+        "label": "Italy"
     },
     {
         "id": "JP",
@@ -192,202 +192,202 @@
     {
         "id": "KZ",
         "value": "KZ",
-        "label": "KZ"
+        "label": "Kazakhstan"
     },
     {
         "id": "KE",
         "value": "KE",
-        "label": "KE"
+        "label": "Kenya"
     },
     {
         "id": "KW",
         "value": "KW",
-        "label": "KW"
+        "label": "Kuwait"
     },
     {
         "id": "LV",
         "value": "LV",
-        "label": "LV"
+        "label": "Latvia"
     },
     {
         "id": "LB",
         "value": "LB",
-        "label": "LB"
+        "label": "Lebanon"
     },
     {
         "id": "MY",
         "value": "MY",
-        "label": "MY"
+        "label": "Malaysia"
     },
     {
         "id": "MX",
         "value": "MX",
-        "label": "MX"
+        "label": "Mexico"
     },
     {
         "id": "MA",
         "value": "MA",
-        "label": "MA"
+        "label": "Morocco"
     },
     {
         "id": "NL",
         "value": "NL",
-        "label": "NL"
+        "label": "Netherlands"
     },
     {
         "id": "NZ",
         "value": "NZ",
-        "label": "NZ"
+        "label": "New Zealand"
     },
     {
         "id": "NG",
         "value": "NG",
-        "label": "NG"
+        "label": "Nigeria"
     },
     {
         "id": "NO",
         "value": "NO",
-        "label": "NO"
+        "label": "Norway"
     },
     {
         "id": "OM",
         "value": "OM",
-        "label": "OM"
+        "label": "Oman"
     },
     {
         "id": "PK",
         "value": "PK",
-        "label": "PK"
+        "label": "Pakistan"
     },
     {
         "id": "PA",
         "value": "PA",
-        "label": "PA"
+        "label": "Panama"
     },
     {
         "id": "PY",
         "value": "PY",
-        "label": "PY"
+        "label": "Paraguay"
     },
     {
         "id": "PE",
         "value": "PE",
-        "label": "PE"
+        "label": "Peru"
     },
     {
         "id": "PH",
         "value": "PH",
-        "label": "PH"
+        "label": "Philippines"
     },
     {
         "id": "PL",
         "value": "PL",
-        "label": "PL"
+        "label": "Poland"
     },
     {
         "id": "PT",
         "value": "PT",
-        "label": "PT"
+        "label": "Portugal"
     },
     {
         "id": "PR",
         "value": "PR",
-        "label": "PR"
+        "label": "Puerto Rico"
     },
     {
         "id": "QA",
         "value": "QA",
-        "label": "QA"
+        "label": "Qatar"
     },
     {
         "id": "LT",
         "value": "LT",
-        "label": "LT"
+        "label": "Lithuania"
     },
     {
         "id": "RO",
         "value": "RO",
-        "label": "RO"
+        "label": "Romania"
     },
     {
         "id": "SA",
         "value": "SA",
-        "label": "SA"
+        "label": "Saudi Arabia"
     },
     {
         "id": "RS",
         "value": "RS",
-        "label": "RS"
+        "label": "Serbia"
     },
     {
         "id": "SG",
         "value": "SG",
-        "label": "SG"
+        "label": "Singapore"
     },
     {
         "id": "SK",
         "value": "SK",
-        "label": "SK"
+        "label": "Slovakia"
     },
     {
         "id": "SI",
         "value": "SI",
-        "label": "SI"
+        "label": "Slovenia"
     },
     {
         "id": "ZA",
         "value": "ZA",
-        "label": "ZA"
+        "label": "South Africa"
     },
     {
         "id": "KR",
         "value": "KR",
-        "label": "KR"
+        "label": "Korea"
     },
     {
         "id": "ES",
         "value": "ES",
-        "label": "ES"
+        "label": "Spain"
     },
     {
         "id": "LK",
         "value": "LK",
-        "label": "LK"
+        "label": "Sri Lanka"
     },
     {
         "id": "SE",
         "value": "SE",
-        "label": "SE"
+        "label": "Sweden"
     },
     {
         "id": "CH",
         "value": "CH",
-        "label": "CH"
+        "label": "Switzerland"
     },
     {
         "id": "TW",
         "value": "TW",
-        "label": "TW"
+        "label": "Taiwan (Province of China)"
     },
     {
         "id": "TH",
         "value": "TH",
-        "label": "TH"
+        "label": "Thailand"
     },
     {
         "id": "TR",
         "value": "TR",
-        "label": "TR"
+        "label": "Turkey"
     },
     {
         "id": "AE",
         "value": "AE",
-        "label": "AE"
+        "label": "United Arab Emirates"
     },
     {
         "id": "GB",
         "value": "GB",
-        "label": "GB"
+        "label": "UK"
     },
     {
         "id": "US",
@@ -397,11 +397,11 @@
     {
         "id": "UY",
         "value": "UY",
-        "label": "UY"
+        "label": "Uruguay"
     },
     {
         "id": "VN",
         "value": "VN",
-        "label": "VN"
+        "label": "VietNam"
     }
 ]
