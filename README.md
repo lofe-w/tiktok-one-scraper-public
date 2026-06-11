@@ -2,14 +2,14 @@
 
 [中文 README](https://github.com/lofe-w/tiktok-one-scraper-public/blob/main/README.zh-CN.md)
 
-All In One for TikTok One Top Ads research. Reliably extract structured data from the official TikTok One Top Ads Insight and Top Ads Library workflows, including insight overview metrics, creative approach formulas, selling point analysis, Top Ads material lists, ad library search results, and material details for marketing intelligence, competitive research, and creative analysis.
+All In One! A focused scraper for the official TikTok One Top Ads surfaces available today. Reliably extract structured Top Ads Insight metrics, creative approach formulas, selling point analysis, Top Ads material lists, Top Ads Library search results, and material details for marketing intelligence, competitive research, and creative analysis.
 
 [Start Now (On Apify)](https://apify.com/doliz/tiktok-one-scraper)
 
-## Key Features
+## ✨ Key Features
 
-* **Fast API-based extraction**: Calls TikTok One backend APIs directly instead of driving the website UI, saving time and reducing automation overhead.
-* **All-in-one Top Ads coverage**: One Actor covers the currently implemented TikTok One Top Ads Insight and Top Ads Library workflows:
+* **⚡️ Fast & Efficient**: Bypasses slow UI interactions by calling TikTok One backend APIs directly, saving time and platform costs.
+* **🎯 All-in-one Top Ads Scraping**: One Actor covering the currently implemented official TikTok One Top Ads workflows, including:
     * [Top Ads Insight](https://ads.tiktok.com/creative/inspiration/top-ads/insight)
     * [Top Ads Library](https://ads.tiktok.com/creative/inspiration/top-ads/library)
     * Creative Approach formulas
@@ -18,33 +18,33 @@ All In One for TikTok One Top Ads research. Reliably extract structured data fro
     * Creative Approach material lists
     * Selling Point Analysis material lists
     * Material detail lookup
-* **Official filter alignment**: Uses TikTok One's official industry, country, time range, objective, likes percentile, and sorting fields where the current product exposes them.
-* **Structured JSON output**: Returns machine-readable TikTok One API responses ready for dashboards, enrichment pipelines, competitive monitoring, and ad research workflows.
-* **Public option files**: Common filter values are published in this repository under [`options/`](options/).
+* **🔎 Powerful Filtering**: Use TikTok One's official industry, country, time range, objective, likes percentile, and sorting fields where the current product exposes them.
+* **📦 Structured JSON Output**: Get clean, machine-readable data ready for dashboards, enrichment pipelines, competitive monitoring, and ad research workflows.
+* **🧭 Officially Aligned Scope**: This Actor follows the current TikTok One Top Ads product scope and only exposes implemented, runnable targets.
 
-## Best Practices
+## 💡 Best practices
 
-This Actor works by accessing TikTok One backend APIs with your logged-in TikTok One cookies. TikTok may apply undisclosed authentication checks and rate limits. For stable runs, we recommend the following:
+This Actor operates by directly accessing TikTok One backend APIs. TikTok may apply undisclosed authentication checks and rate limits. To keep runs stable and avoid throttling, we strongly recommend the following best practices:
 
-### Use Valid TikTok One Cookies
+### 💡 Use valid TikTok One cookies
 
 Use cookies from an account that can open the TikTok One Top Ads pages in a browser. If cookies are missing, expired, invalid, or blocked by TikTok, upstream requests may fail or return authentication errors.
 
-### Rotate Multiple Accounts for Larger Workloads
+### 💡 Utilize multiple accounts (cookies)
 
-For frequent or high-volume scraping, rotate multiple account cookies across requests. This distributes request load and reduces the chance that one account is throttled.
+For frequent or high-volume scraping, provide a pool of account cookies and rotate through them for different requests. This distributes request load and reduces the risk of any single account being rate-limited.
 
-### Limit Concurrent Requests
+### 💡 Limit the number of concurrent requests
 
-If you run scheduled jobs or call several targets at the same time, too many concurrent upstream requests can trigger rate limiting.
+For scheduled or bulk workflows, too many concurrent upstream requests may be throttled.
 
-Client-side [rate limiting](https://en.wikipedia.org/wiki/Rate_limiting) is recommended. A common approach is a [token bucket](https://en.wikipedia.org/wiki/Token_bucket), where requests can only start after a token is available.
+You can implement [Rate Limiting](https://en.wikipedia.org/wiki/Rate_limiting) on the client side. A common approach is the [Token Bucket Algorithm](https://en.wikipedia.org/wiki/Token_bucket): tokens are issued according to your rate limit rule, and each request must obtain a token before it starts.
 
-For production pipelines, use a [message queue](https://en.wikipedia.org/wiki/Message_queue): push scraping tasks into a queue, process them with a controlled number of workers, and retry failed tasks later.
+A more robust implementation is to use [Message Queuing](https://en.wikipedia.org/wiki/Message_queue). Push scraping tasks to a queue, let dedicated consumers process them, limit the number of concurrent consumers, and retry failed tasks later.
 
-## Input Configuration
+## ⚙️ Input Configuration
 
-### Main
+### ⚙️ Main
 
 * **Target** `target`: (Required) Select the TikTok One data source. Your choice determines which settings below are used.
 
@@ -52,11 +52,11 @@ For production pipelines, use a [message queue](https://en.wikipedia.org/wiki/Me
 
 * **Cookies** `cookies`: (Required) Your authentication cookies after logging into TikTok One on `ads.tiktok.com`. Way to obtain:
 
-  ![How to get cookies](imgs/get_cookie.png)
+  ![](https://github.com/lofe-w/tiktok-one-scraper-public/raw/main/imgs/get_cookie.png)
 
 ---
 
-### Top Ads Insight Settings
+### ⚙️ Top Ads Insight Settings (`top_ads_insight`)
 
 These settings are only used when `Target` is set to `top_ads_insight`.
 
@@ -65,11 +65,11 @@ These settings are only used when `Target` is set to `top_ads_insight`.
 * **Time range** `insight_time_range`: (Required) Publication time range. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-one-scraper-public/refs/heads/main/options/top_ads_insight_time_range.json)
 * **Sort by** `insight_order_field`: (Required) Ranking metric used by related insight requests. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-one-scraper-public/refs/heads/main/options/top_ads_insight_order_field.json)
 
-The `top_ads_insight` target mirrors the initial Top Ads Insight page load. It returns the overview metrics, Creative Approach formulas, Selling Point Analysis categories, and Top 20 selling points for the first categories returned by TikTok One.
+The `top_ads_insight` target mirrors the initial Top Ads Insight page load. It returns overview metrics, Creative Approach formulas, Selling Point Analysis categories, and Top 20 selling points for the first categories returned by TikTok One.
 
 ---
 
-### Creative Approach Settings
+### ⚙️ Top Ads Insight - Creative Approach Settings (`top_ads_insight_creative_approach`)
 
 These settings are only used when `Target` is set to `top_ads_insight_creative_approach`.
 
@@ -82,7 +82,7 @@ Use `formulaList[].id` from this target as `insight_formula_material_formula_id`
 
 ---
 
-### Selling Point Analysis Settings
+### ⚙️ Top Ads Insight - Selling Point Analysis Settings (`top_ads_insight_selling_point_analysis`)
 
 These settings are only used when `Target` is set to `top_ads_insight_selling_point_analysis`.
 
@@ -95,7 +95,7 @@ Use `SellingPoints[].categoryName` from this target as `insight_top20_category` 
 
 ---
 
-### Top 20 Selling Points Settings
+### ⚙️ Top Ads Insight - Top 20 Selling Points Settings (`top_ads_insight_top20_selling_points`)
 
 These settings are only used when `Target` is set to `top_ads_insight_top20_selling_points`.
 
@@ -107,7 +107,7 @@ These settings are only used when `Target` is set to `top_ads_insight_top20_sell
 
 ---
 
-### Creative Approach Materials Settings
+### ⚙️ Top Ads Insight - Creative Approach Materials Settings (`top_ads_insight_formula_material_list`)
 
 These settings are only used when `Target` is set to `top_ads_insight_formula_material_list`.
 
@@ -123,7 +123,7 @@ Use `itemList[].materialID` from this target as `insight_detail_material_id` whe
 
 ---
 
-### Selling Point Analysis Materials Settings
+### ⚙️ Top Ads Insight - Selling Point Analysis Materials Settings (`top_ads_insight_selling_point_material_list`)
 
 These settings are only used when `Target` is set to `top_ads_insight_selling_point_material_list`.
 
@@ -139,7 +139,7 @@ Use `itemList[].materialID` from this target as `insight_detail_material_id` whe
 
 ---
 
-### Top Ads Insight Material Detail Settings
+### ⚙️ Top Ads Insight - Material Detail Settings (`top_ads_insight_material_detail`)
 
 These settings are only used when `Target` is set to `top_ads_insight_material_detail`.
 
@@ -147,7 +147,7 @@ These settings are only used when `Target` is set to `top_ads_insight_material_d
 
 ---
 
-### Top Ads Library Settings
+### ⚙️ Top Ads Library Settings (`top_ads_library`)
 
 These settings are only used when `Target` is set to `top_ads_library`.
 
@@ -165,7 +165,7 @@ Use `itemList[].materialID` from this target as `library_material_id` when fetch
 
 ---
 
-### Top Ads Library Material Detail Settings
+### ⚙️ Top Ads Library - Material Detail Settings (`top_ads_library_material_detail`)
 
 These settings are only used when `Target` is set to `top_ads_library_material_detail`.
 
@@ -173,150 +173,492 @@ These settings are only used when `Target` is set to `top_ads_library_material_d
 
 ---
 
-## Targets and Cost
+## 📊 Output Structure
 
-| Target | Description | Cost |
-|---|---|---|
-| `top_ads_insight` | Fetches the initial Top Ads Insight page data: overview metrics, Creative Approach formulas, Selling Point Analysis categories, and Top 20 selling points for the first categories returned by TikTok One. | 0.002$ / fetched item |
-| `top_ads_insight_creative_approach` | Fetches Creative Approach formulas. | 0.002$ / item |
-| `top_ads_insight_selling_point_analysis` | Fetches Selling Point Analysis category rows. | 0.002$ / item |
-| `top_ads_insight_top20_selling_points` | Fetches selling points under a selected category. | 0.002$ / item |
-| `top_ads_insight_formula_material_list` | Fetches Top Ads Insight materials for a selected Creative Approach formula. | 0.002$ / item |
-| `top_ads_insight_selling_point_material_list` | Fetches Top Ads Insight materials for a selected selling point. | 0.002$ / item |
-| `top_ads_insight_material_detail` | Fetches one Top Ads Insight material detail. | 0.002$ / time |
-| `top_ads_library` | Searches Top Ads Library materials with official filters. | 0.002$ / item |
-| `top_ads_library_material_detail` | Fetches one Top Ads Library material detail. | 0.002$ / time |
+The Actor returns a dataset of items. The structure of each item depends on the `target` you selected.
 
-## Output Structure
+**NOTE**: The following are real sample structures from TikTok One API responses. The actual output may contain more fields. Please refer to the output of a sample run for the exact schema.
 
-The Actor returns dataset items. Each item is the raw structured response for the selected `target`, with field names preserved from TikTok One where possible.
+---
 
-**Note**: The following examples are simplified. Actual output can contain more fields depending on TikTok One's current response.
-
-### Top Ads Insight
+### 📊 Top Ads Insight (`top_ads_insight`)
 
 ```json
 {
     "dataInsight": {
         "BaseResp": {
             "StatusCode": 0,
-            "StatusMessage": "success"
+            "StatusMessage": ""
         },
-        "videoView": 123456,
-        "clickRate": 0.82,
-        "engagementRate": 1.54,
-        "videoView6sRate": 22.31
+        "clickRate": 0.01861966174097709,
+        "engagementRate": 0.004667982359031695,
+        "videoView": "2923411862",
+        "videoView6sRate": 0.13300873819879164
     },
     "creativeApproach": {
         "BaseResp": {
             "StatusCode": 0,
-            "StatusMessage": "success"
+            "StatusMessage": ""
         },
         "formulaList": [
             {
-                "id": "example_formula_id",
-                "content": "Example creative approach",
-                "videoView": 12345
-            }
+                "clickRate": 0.01532804205489521,
+                "content": [
+                    "Function/Attribute",
+                    "Physical product/Commodity",
+                    "Applicable Scenarios",
+                    "Target Audience"
+                ],
+                "engagementRate": 0.003626492592307972,
+                "id": "[Function/Attribute, Physical product/Commodity, Applicable Scenarios, Target Audience]",
+                "postNumPct": 0.10424275523091102,
+                "videoView": "725058423",
+                "videoView6sRate": 0.1357802376705856
+            },
+            ... /* omit */
         ]
     },
     "sellingPointAnalysis": {
         "category": {
+            "BaseResp": {
+                "StatusCode": 0,
+                "StatusMessage": ""
+            },
             "SellingPoints": [
                 {
-                    "categoryName": "Example category"
-                }
+                    "categoryName": "Target Audience",
+                    "clickRate": 0.015131855660077015,
+                    "clickRateWow": -0.021820344372670414,
+                    "engagementRate": 0.006421364107410872,
+                    "engagementRateWow": 0.037459146764485536,
+                    "postNumPct": 0.8560120182585081,
+                    "sellingPointName": "",
+                    "videoView": "7085131950",
+                    "videoView6sRate": 0.12949835648438418,
+                    "videoView6sRateWow": -0.013653260524311877,
+                    "videoViewWow": 0.47982782334909313
+                },
+                ... /* omit */
             ]
         },
         "top20SellingPoints": [
             {
+                "BaseResp": {
+                    "StatusCode": 0,
+                    "StatusMessage": ""
+                },
                 "SellingPoints": [
                     {
-                        "sellingPointName": "Example selling point"
-                    }
+                        "categoryName": "Target Audience",
+                        "clickRate": 0.013211661428313998,
+                        "clickRateWow": -0.04245137306068203,
+                        "engagementRate": 0.0031889771656263264,
+                        "engagementRateWow": -0.06709534547129498,
+                        "postNumPct": 0.10068180504997976,
+                        "sellingPointName": "Homeowners and Maintenance Enthusiasts",
+                        "videoView": "836561023",
+                        "videoView6sRate": 0.14181924418919528,
+                        "videoView6sRateWow": -0.03342331175429736,
+                        "videoViewWow": 0.5779036729199662
+                    },
+                    ... /* omit */
                 ]
-            }
+            },
+            ... /* omit */
         ]
     }
 }
 ```
 
-### Insight Lists
+---
 
-`top_ads_insight_creative_approach` returns `formulaList`. `top_ads_insight_selling_point_analysis` and `top_ads_insight_top20_selling_points` return `SellingPoints`. The material-list targets return `itemList` and pagination fields.
+### 📊 Top Ads Insight - Creative Approach (`top_ads_insight_creative_approach`)
 
 ```json
 {
     "BaseResp": {
         "StatusCode": 0,
-        "StatusMessage": "success"
+        "StatusMessage": ""
+    },
+    "formulaList": [
+        {
+            "clickRate": 0.01532804205489521,
+            "content": [
+                "Function/Attribute",
+                "Physical product/Commodity",
+                "Applicable Scenarios",
+                "Target Audience"
+            ],
+            "engagementRate": 0.003626492592307972,
+            "id": "[Function/Attribute, Physical product/Commodity, Applicable Scenarios, Target Audience]",
+            "postNumPct": 0.10424275523091102,
+            "videoView": "725058423",
+            "videoView6sRate": 0.1357802376705856
+        },
+        ... /* omit */
+    ]
+}
+```
+
+---
+
+### 📊 Top Ads Insight - Selling Point Analysis (`top_ads_insight_selling_point_analysis`)
+
+```json
+{
+    "BaseResp": {
+        "StatusCode": 0,
+        "StatusMessage": ""
+    },
+    "SellingPoints": [
+        {
+            "categoryName": "Target Audience",
+            "clickRate": 0.015131855660077015,
+            "clickRateWow": -0.021820344372670414,
+            "engagementRate": 0.006421364107410872,
+            "engagementRateWow": 0.037459146764485536,
+            "postNumPct": 0.8560120182585081,
+            "sellingPointName": "",
+            "videoView": "7085131950",
+            "videoView6sRate": 0.12949835648438418,
+            "videoView6sRateWow": -0.013653260524311877,
+            "videoViewWow": 0.47982782334909313
+        },
+        ... /* omit */
+    ]
+}
+```
+
+---
+
+### 📊 Top Ads Insight - Top 20 Selling Points (`top_ads_insight_top20_selling_points`)
+
+```json
+{
+    "BaseResp": {
+        "StatusCode": 0,
+        "StatusMessage": ""
+    },
+    "SellingPoints": [
+        {
+            "categoryName": "Target Audience",
+            "clickRate": 0.013211661428313998,
+            "clickRateWow": -0.04245137306068203,
+            "engagementRate": 0.0031889771656263264,
+            "engagementRateWow": -0.06709534547129498,
+            "postNumPct": 0.10068180504997976,
+            "sellingPointName": "Homeowners and Maintenance Enthusiasts",
+            "videoView": "836561023",
+            "videoView6sRate": 0.14181924418919528,
+            "videoView6sRateWow": -0.03342331175429736,
+            "videoViewWow": 0.5779036729199662
+        },
+        ... /* omit */
+    ]
+}
+```
+
+---
+
+### 📊 Top Ads Insight - Creative Approach Materials (`top_ads_insight_formula_material_list`)
+
+```json
+{
+    "BaseResp": {
+        "StatusCode": 0,
+        "StatusMessage": ""
     },
     "itemList": [
         {
-            "materialID": "1234567890",
-            "videoView": 12345,
-            "clickRate": 0.82,
-            "engagementRate": 1.54
-        }
+            "brandName": "",
+            "clickRate": 0,
+            "commentCnt": "0",
+            "countryCodeList": [
+                "SA"
+            ],
+            "ctrRank": 0.66,
+            "engagementRate": 0.00036005527335007106,
+            "industry": "18000000000",
+            "landingPage": "",
+            "likeCnt": "0",
+            "materialID": "7637823224530026516",
+            "shareCnt": "0",
+            "title": "احمي اثاثك مع بخاخ نانو فور لايف",
+            "videoInfo": {
+                "cover": "https://p19-common-sign.tiktokcdn.com/tos-alisg-p-0051c001-sg/oYDfXgPVQCNf9IE6JfbAGX7DJCJwwA7ULDAgFT~tplv-photomode-zoomcover-tcm:720:720.avif?dr=16670&refresh_token=c241a2c4&x-expires=1781740800&x-signature=jSOpVOxf%2FV4pFCjlNMt%2FS%2BmJ5x4%3D&t=e8257cf9&ps=933b5bde&shp=c8b38fb9&shcp=c8b38fb9&idc=my2",
+                "duration": 21.316,
+                "height": "1280",
+                "vid": "v10033g50000d7vg15fog65tgqjqdts0",
+                "video_url": {
+                    "720p": "https://v16m-default.tiktokcdn.com/a910ff2b45523eb66f31e225e9c6a627/6a2ab814/video/tos/alisg/tos-alisg-ve-0051c001-sg/oQ9eM839ZQTAief79APAWK67AHtfAgahfMwlkS/?a=0&bti=NTU4QDM1NGA%3D&&bt=1801&ft=cApXJCz7ThWHzMr9LGZmo0P&mime_type=video_mp4&rc=aGY7Z2k4ODlmODNoPDU8NUBpM3d0dHc5cjhqOjMzODYzNEA0NV4tMTJeNS4xMzYxMWNiYSNwYWdkMmRjLnNhLS1kMC1zcw%3D%3D&vvpl=1&l=202606111528313D38198328B44E682ADF&btag=e000b8000"
+                },
+                "width": "720"
+            },
+            "videoView": "411048",
+            "videoView6sRank": 0.73,
+            "videoView6sRate": 0
+        },
+        ... /* omit */
     ],
     "pagination": {
-        "page": 1,
-        "size": 20,
-        "total": 100,
-        "hasMore": true
+        "hasMore": false,
+        "page": "1",
+        "size": "2",
+        "total": "2"
     }
 }
 ```
 
-### Top Ads Library
+---
+
+### 📊 Top Ads Insight - Selling Point Analysis Materials (`top_ads_insight_selling_point_material_list`)
 
 ```json
 {
     "BaseResp": {
         "StatusCode": 0,
-        "StatusMessage": "success"
+        "StatusMessage": ""
     },
     "itemList": [
         {
-            "materialID": "1234567890",
-            "brandName": "Example brand",
-            "videoView": 12345,
-            "clickRate": 0.82,
-            "engagementRate": 1.54
-        }
+            "brandName": "",
+            "clickRate": 0,
+            "commentCnt": "0",
+            "countryCodeList": [
+                "SA"
+            ],
+            "ctrRank": 0.66,
+            "engagementRate": 0.00036005527335007106,
+            "industry": "18000000000",
+            "landingPage": "",
+            "likeCnt": "0",
+            "materialID": "7637823224530026516",
+            "shareCnt": "0",
+            "title": "احمي اثاثك مع بخاخ نانو فور لايف",
+            "videoInfo": {
+                "cover": "https://p19-common-sign.tiktokcdn.com/tos-alisg-p-0051c001-sg/oYDfXgPVQCNf9IE6JfbAGX7DJCJwwA7ULDAgFT~tplv-photomode-zoomcover-tcm:720:720.avif?dr=16670&refresh_token=c241a2c4&x-expires=1781740800&x-signature=jSOpVOxf%2FV4pFCjlNMt%2FS%2BmJ5x4%3D&t=e8257cf9&ps=933b5bde&shp=c8b38fb9&shcp=c8b38fb9&idc=my2",
+                "duration": 21.316,
+                "height": "1280",
+                "vid": "v10033g50000d7vg15fog65tgqjqdts0",
+                "video_url": {
+                    "720p": "https://v16m-default.tiktokcdn.com/357714a02f5b0c88d30efdab610f5721/6a2ac293/video/tos/alisg/tos-alisg-ve-0051c001-sg/oQ9eM839ZQTAief79APAWK67AHtfAgahfMwlkS/?a=0&bti=NTU4QDM1NGA%3D&&bt=1801&ft=cApXJCz7ThWH9Rr9LGZmo0P&mime_type=video_mp4&rc=aGY7Z2k4ODlmODNoPDU8NUBpM3d0dHc5cjhqOjMzODYzNEA0NV4tMTJeNS4xMzYxMWNiYSNwYWdkMmRjLnNhLS1kMC1zcw%3D%3D&vvpl=1&l=202606111613186D2D026BFB0E135F48DD&btag=e000b8000"
+                },
+                "width": "720"
+            },
+            "videoView": "411048",
+            "videoView6sRank": 0.73,
+            "videoView6sRate": 0
+        },
+        ... /* omit */
     ],
     "pagination": {
-        "page": 1,
-        "size": 20,
-        "total": 100,
-        "hasMore": true
+        "hasMore": true,
+        "page": "1",
+        "size": "2",
+        "total": "3"
     }
 }
 ```
 
-### Material Detail
+---
 
-Both `top_ads_insight_material_detail` and `top_ads_library_material_detail` return the detail response for one `materialID`.
+### 📊 Top Ads Insight - Material Detail (`top_ads_insight_material_detail`)
 
 ```json
 {
     "BaseResp": {
         "StatusCode": 0,
-        "StatusMessage": "success"
+        "StatusMessage": ""
     },
-    "materialID": "1234567890",
-    "videoView": 12345,
-    "clickRate": 0.82,
-    "engagementRate": 1.54,
-    "videoInfo": {
-        "cover": "https://...",
-        "videoUrl": "https://..."
+    "itemInfo": {
+        "brandName": "",
+        "clickRate": 0,
+        "commentCnt": "0",
+        "countryCodeList": [
+            "SA"
+        ],
+        "ctrRank": 0.66,
+        "engagementRate": 0.00036005527335007106,
+        "industry": "18000000000",
+        "keyFrameInfo": [
+            {
+                "click_cnt": 0.2391304347826087,
+                "convert_cnt": 0,
+                "play_retain_cnt": 1,
+                "retain_ctr": 0.03143979992854591,
+                "retain_cvr": 0,
+                "second": "0"
+            },
+            ... /* omit */
+        ],
+        "landingPage": "https://nano4life-sa.com/ar?utm_source=tiktok&utm_medium=paid&utm_id=__CAMPAIGN_ID__&utm_campaign=__CAMPAIGN_NAME__",
+        "likeCnt": "147",
+        "materialID": "7637823224530026516",
+        "objective": [
+            5
+        ],
+        "shareCnt": "1",
+        "title": "احمي اثاثك مع بخاخ نانو فور لايف",
+        "videoInfo": {
+            "cover": "https://p16-common-sign.tiktokcdn.com/tos-alisg-p-0051c001-sg/oYDfXgPVQCNf9IE6JfbAGX7DJCJwwA7ULDAgFT~tplv-noop.image?dr=18692&refresh_token=1d20876a&x-expires=1781187224&x-signature=qHW3teAeUrAmlZhcBCYIx54A9zY%3D&t=9276707c&ps=14f1eb3e&shp=9e36835a&shcp=317596d8&idc=my2&VideoID=v10033g50000d7vg15fog65tgqjqdts0",
+            "duration": 21.316,
+            "height": "1280",
+            "vid": "v10033g50000d7vg15fog65tgqjqdts0",
+            "video_url": {
+                "720p": "https://v16m-default.tiktokcdn.com/b3c2444addc896d7993d3618eda3b1a5/6a2ac298/video/tos/alisg/tos-alisg-ve-0051c001-sg/oQ9eM839ZQTAief79APAWK67AHtfAgahfMwlkS/?a=0&bti=NTU4QDM1NGA%3D&&bt=1801&ft=cApXJCz7ThWH4Rr9LGZmo0P&mime_type=video_mp4&rc=aGY7Z2k4ODlmODNoPDU8NUBpM3d0dHc5cjhqOjMzODYzNEA0NV4tMTJeNS4xMzYxMWNiYSNwYWdkMmRjLnNhLS1kMC1zcw%3D%3D&vvpl=1&l=20260611161323C6AD417FBB95886B2486&btag=e000b8000"
+            },
+            "width": "720"
+        },
+        "videoView": "411048",
+        "videoView6sRank": 0.73,
+        "videoView6sRate": 0
     }
 }
 ```
 
-## Notes
+---
 
-TikTok One runs on `ads.tiktok.com` and requires valid logged-in cookies. Some Top Ads Insight endpoints also require TikTok One browser-side request signatures; the Actor handles those internally, but the account cookie still needs permission to access the official TikTok One pages.
+### 📊 Top Ads Library (`top_ads_library`)
 
-This public repository contains user-facing documentation, images, and option files. The Apify Actor runtime code lives in the private Actor repository.
+```json
+{
+    "BaseResp": {
+        "StatusCode": 0,
+        "StatusMessage": ""
+    },
+    "itemList": [
+        {
+            "adv_id": [
+                "7372413843525517313"
+            ],
+            "brandName": "",
+            "clickRate": 0,
+            "commentCnt": "0",
+            "countryCodeList": [
+                "PH"
+            ],
+            "ctrRank": 0.04,
+            "engagementRate": 0.0010963407354446612,
+            "industry": "23125000000",
+            "landingPage": "",
+            "likeCnt": "0",
+            "materialID": "7644457820796878856",
+            "objective": [
+                5
+            ],
+            "shareCnt": "0",
+            "title": "Pabangisin ang bonding ng tropa with Foodvencha. #TikmanAngAdvencha P0173P052526M",
+            "videoInfo": {
+                "cover": "https://p16-common-sign.tiktokcdn.com/tos-alisg-p-0037/o01V469EWVvE5h6iWsuNnpYmBGIaAibaLB9AI~tplv-photomode-zoomcover-tcm:720:720.avif?dr=16670&refresh_token=a327d82d&x-expires=1781748000&x-signature=g%2BKhapyPyF7CntIv%2FXghBzDZMwY%3D&t=e8257cf9&ps=933b5bde&shp=c8b38fb9&shcp=c8b38fb9&idc=my",
+                "duration": 15.022,
+                "height": "1280",
+                "vid": "v14044g50000d8aplpnog65tjr3c996g",
+                "video_url": {
+                    "720p": "https://v16m-default.tiktokcdn.com/a9b53b615ecfa7f5c90c4fdf794e5f4a/6a2ab825/video/tos/alisg/tos-alisg-pve-0037c001/okSgbQEhYEAuasAWBkWVIEpNFLvkp5ihn9Bia/?a=0&bti=NTU4QDM1NGA%3D&&bt=2884&ft=cApXJCz7ThWHeMr9LGZmo0P&mime_type=video_mp4&rc=aTszNjg5OWVpPGZoZGRpZ0BpajxmdXc5cnNzOzMzODczNEAzMi9iMGFhNTMxNi5hMWFjYSMzNjBnMmRraV5hLS1kMTFzcw%3D%3D&vvpl=1&l=202606111528544E4EA3BB5EA48867FD7A&btag=e000b8000"
+                },
+                "width": "720"
+            },
+            "videoView": "82856540",
+            "videoView6sRank": 0.08,
+            "videoView6sRate": 0.1343032426572047
+        },
+        ... /* omit */
+    ],
+    "pagination": {
+        "hasMore": true,
+        "page": "1",
+        "size": "2",
+        "total": "500"
+    }
+}
+```
+
+---
+
+### 📊 Top Ads Library - Material Detail (`top_ads_library_material_detail`)
+
+```json
+{
+    "BaseResp": {
+        "StatusCode": 0,
+        "StatusMessage": ""
+    },
+    "itemInfo": {
+        "brandName": "",
+        "clickRate": 0,
+        "commentCnt": "675",
+        "countryCodeList": [
+            "PH"
+        ],
+        "ctrRank": 0.04,
+        "engagementRate": 0.0010963407354446612,
+        "industry": "23000000000",
+        "keyFrameInfo": [
+            {
+                "click_cnt": 0.7028168762184107,
+                "convert_cnt": 0,
+                "play_retain_cnt": 1,
+                "retain_ctr": 0.4027917084587095,
+                "retain_cvr": 0,
+                "second": "0"
+            },
+            ... /* omit */
+        ],
+        "landingPage": "https://www.klook.com/en-PH/tetris/promo/dewfoodvenchatour/",
+        "likeCnt": "89051",
+        "materialID": "7644457820796878856",
+        "objective": [
+            5
+        ],
+        "shareCnt": "1113",
+        "title": "Pabangisin ang bonding ng tropa with Foodvencha. #TikmanAngAdvencha P0173P052526M",
+        "videoInfo": {
+            "cover": "https://p16-common-sign.tiktokcdn.com/tos-alisg-p-0037/o01V469EWVvE5h6iWsuNnpYmBGIaAibaLB9AI~tplv-noop.image?dr=18692&refresh_token=bff93274&x-expires=1781184550&x-signature=Qsoq1AIxg7tDb01r%2F9pqZy%2BRizI%3D&t=9276707c&ps=14f1eb3e&shp=9e36835a&shcp=317596d8&idc=my2&VideoID=v14044g50000d8aplpnog65tjr3c996g",
+            "duration": 15.022,
+            "height": "1280",
+            "vid": "v14044g50000d8aplpnog65tjr3c996g",
+            "video_url": {
+                "720p": "https://v16m-default.tiktokcdn.com/d6221c39c77ff604a181e6e9df87799a/6a2ab826/video/tos/alisg/tos-alisg-pve-0037c001/okSgbQEhYEAuasAWBkWVIEpNFLvkp5ihn9Bia/?a=0&bti=NTU4QDM1NGA%3D&&bt=2884&ft=cApXJCz7ThWHsMr9LGZmo0P&mime_type=video_mp4&rc=aTszNjg5OWVpPGZoZGRpZ0BpajxmdXc5cnNzOzMzODczNEAzMi9iMGFhNTMxNi5hMWFjYSMzNjBnMmRraV5hLS1kMTFzcw%3D%3D&vvpl=1&l=202606111528552512DCABE9F7496A60E3&btag=e000b8000"
+            },
+            "width": "720"
+        },
+        "videoView": "82856540",
+        "videoView6sRank": 0.08,
+        "videoView6sRate": 0
+    }
+}
+```
+
+---
+
+## 💰 Cost of Use & Pricing
+
+Pricing model: [Pay per event](https://docs.apify.com/platform/actors/publishing/monetize/pay-per-event)
+
+The trigger logic of the event is the number of items that return the result.
+
+| Target | Cost |
+|---|---|
+| [Top Ads Insight](https://ads.tiktok.com/creative/inspiration/top-ads/insight) | 0.002$ / fetched item |
+| [Top Ads Insight - Creative Approach](https://ads.tiktok.com/creative/inspiration/top-ads/insight) | 0.002$ / item |
+| [Top Ads Insight - Selling Point Analysis](https://ads.tiktok.com/creative/inspiration/top-ads/insight) | 0.002$ / item |
+| [Top Ads Insight - Top 20 Selling Points](https://ads.tiktok.com/creative/inspiration/top-ads/insight) | 0.002$ / item |
+| [Top Ads Insight - Creative Approach Materials](https://ads.tiktok.com/creative/inspiration/top-ads/insight) | 0.002$ / item |
+| [Top Ads Insight - Selling Point Analysis Materials](https://ads.tiktok.com/creative/inspiration/top-ads/insight) | 0.002$ / item |
+| [Top Ads Insight - Material Detail](https://ads.tiktok.com/creative/inspiration/top-ads/insight) | 0.002$ / time |
+| [Top Ads Library](https://ads.tiktok.com/creative/inspiration/top-ads/library) | 0.002$ / item |
+| [Top Ads Library - Material Detail](https://ads.tiktok.com/creative/inspiration/top-ads/library) | 0.002$ / time |
+
+Unknown or unsupported targets are rejected before any upstream request or charge.
+
+## 📞 Support
+
+If you encounter any issues or have feature requests, please use the **Issues** tab on the Actor's page in the Apify Console. Please provide a detailed description of the problem and the Run ID.
+
+## ⚠️ Limitations and Disclaimers
+
+* This Actor is not an official TikTok product and is not affiliated with or endorsed by TikTok, Inc.
+* The structure of the TikTok One website and its internal APIs may change at any time.
+* TikTok One requests require valid logged-in cookies from `ads.tiktok.com`; expired, invalid, rate-limited, or unauthorized cookies can cause upstream failures.
+* Some Top Ads Insight endpoints require browser-side request signatures. The Actor handles these internally, but successful access still depends on TikTok One accepting the account session.
+* Please use this Actor responsibly and in accordance with the Apify Terms of Service.
