@@ -9,7 +9,7 @@ Scrape TikTok One inspiration and insight data through TikTok One backend APIs. 
 ## Key Features
 
 * **Fast API-based extraction**: Calls TikTok One backend APIs directly instead of driving the website UI.
-* **Top Ads Insight support**: Fetch overview metrics, creative approaches, selling point analysis, material lists, and material details.
+* **Top Ads Insight support**: Fetch overview metrics, creative approaches, selling point analysis, Creative Approach materials, Selling Point Analysis materials, and material details.
 * **Top Ads Library support**: Search the Top Ads Library with official filters and fetch material details.
 * **Structured JSON output**: Returns raw TikTok One API responses in a machine-readable format.
 * **Public option files**: Common filter values are published in this repository under [`options/`](options/).
@@ -41,15 +41,15 @@ Each Top Ads Insight single target has its own industry, country, time range, an
 
 * `top_ads_insight_creative_approach`: fetches creative approach formulas.
 * `top_ads_insight_selling_point_analysis`: fetches selling point categories.
-* `top_ads_insight_top20_selling_points`: requires `insight_top20_category` and fetches selling points under that category.
-* `top_ads_insight_formula_material_list`: requires `insight_formula_material_formula_id`, plus `insight_formula_material_page` and `insight_formula_material_limit`.
-* `top_ads_insight_selling_point_material_list`: requires `insight_selling_material_selling_point`, plus `insight_selling_material_page` and `insight_selling_material_limit`.
+* `top_ads_insight_top20_selling_points`: requires `insight_top20_category`. Use `SellingPoints[].categoryName` from `top_ads_insight_selling_point_analysis`.
+* `top_ads_insight_formula_material_list`: requires `insight_formula_material_formula_id`. Use `formulaList[].id` from `top_ads_insight_creative_approach`. Also supports `insight_formula_material_page` and `insight_formula_material_limit`.
+* `top_ads_insight_selling_point_material_list`: requires `insight_selling_material_selling_point`. Use `SellingPoints[].sellingPointName` from `top_ads_insight_top20_selling_points`. Also supports `insight_selling_material_page` and `insight_selling_material_limit`.
 
 ### Top Ads Insight - Material Detail
 
 These settings are used when `Target` is `top_ads_insight_material_detail`.
 
-* **Insight material ID** `insight_detail_material_id`: (Required) Material ID returned by a Top Ads Insight materials target.
+* **Insight material ID** `insight_detail_material_id`: (Required) Use `itemList[].materialID` from `top_ads_insight_formula_material_list` or `top_ads_insight_selling_point_material_list`.
 
 ### Top Ads Library Settings
 
@@ -69,18 +69,18 @@ These settings are used when `Target` is `top_ads_library`.
 
 These settings are used when `Target` is `top_ads_library_material_detail`.
 
-* **Material ID** `library_material_id`: (Required) Material ID returned by `top_ads_library`.
+* **Material ID** `library_material_id`: (Required) Use `itemList[].materialID` from `top_ads_library`.
 
 ## Targets
 
 | Target | Description | Cost |
 | --- | --- | --- |
-| `top_ads_insight` | Fetches the initial Top Ads Insight page data: overview, creative approaches, categories, and selling point rows for the first categories. | 0.002$ / fetched item |
+| `top_ads_insight` | Fetches the initial Top Ads Insight page data: Data Insight overview, Creative Approach formulas, Selling Point Analysis categories, and Top 20 selling points for the first categories. | 0.002$ / fetched item |
 | `top_ads_insight_creative_approach` | Fetches creative approach formulas. | 0.002$ / item |
 | `top_ads_insight_selling_point_analysis` | Fetches selling point categories. | 0.002$ / item |
 | `top_ads_insight_top20_selling_points` | Fetches selling points under a selected category. | 0.002$ / item |
 | `top_ads_insight_formula_material_list` | Fetches Top Ads Insight materials for a formula. | 0.002$ / item |
-| `top_ads_insight_selling_point_material_list` | Fetches Top Ads Insight materials for a selling point. | 0.002$ / item |
+| `top_ads_insight_selling_point_material_list` | Fetches Top Ads Insight Selling Point Analysis materials for a selling point. | 0.002$ / item |
 | `top_ads_insight_material_detail` | Fetches one Top Ads Insight material detail. | 0.002$ / time |
 | `top_ads_library` | Searches Top Ads Library materials with official filters. | 0.002$ / item |
 | `top_ads_library_material_detail` | Fetches one Top Ads Library material detail. | 0.002$ / time |

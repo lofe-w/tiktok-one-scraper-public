@@ -9,7 +9,7 @@
 ## 核心功能
 
 * **快速 API 采集**：直接调用 TikTok One 后端接口，避免低效的网页 UI 自动化。
-* **支持 Top Ads Insight**：采集概览指标、创意方法、卖点分析、素材列表和素材详情。
+* **支持 Top Ads Insight**：采集概览指标、创意方法、卖点分析、创意方法素材、卖点分析素材和素材详情。
 * **支持 Top Ads Library**：使用官方筛选项搜索 Top Ads Library，并采集素材详情。
 * **结构化 JSON 输出**：返回机器可读的 TikTok One API 数据。
 * **公开选项文件**：常用筛选项发布在本仓库的 [`options/`](options/) 目录下。
@@ -41,15 +41,15 @@
 
 * `top_ads_insight_creative_approach`：采集创意方法公式。
 * `top_ads_insight_selling_point_analysis`：采集卖点分类。
-* `top_ads_insight_top20_selling_points`：需要 `insight_top20_category`，采集该分类下的卖点。
-* `top_ads_insight_formula_material_list`：需要 `insight_formula_material_formula_id`，并支持 `insight_formula_material_page` 和 `insight_formula_material_limit`。
-* `top_ads_insight_selling_point_material_list`：需要 `insight_selling_material_selling_point`，并支持 `insight_selling_material_page` 和 `insight_selling_material_limit`。
+* `top_ads_insight_top20_selling_points`：需要 `insight_top20_category`。使用 `top_ads_insight_selling_point_analysis` 返回的 `SellingPoints[].categoryName`。
+* `top_ads_insight_formula_material_list`：需要 `insight_formula_material_formula_id`。使用 `top_ads_insight_creative_approach` 返回的 `formulaList[].id`，并支持 `insight_formula_material_page` 和 `insight_formula_material_limit`。
+* `top_ads_insight_selling_point_material_list`：需要 `insight_selling_material_selling_point`。使用 `top_ads_insight_top20_selling_points` 返回的 `SellingPoints[].sellingPointName`，并支持 `insight_selling_material_page` 和 `insight_selling_material_limit`。
 
 ### Top Ads Insight - Material Detail
 
 当 `Target` 为 `top_ads_insight_material_detail` 时使用这些参数。
 
-* **Insight material ID** `insight_detail_material_id`：（必填）由 Top Ads Insight materials 目标返回的素材 ID。
+* **Insight material ID** `insight_detail_material_id`：（必填）使用 `top_ads_insight_formula_material_list` 或 `top_ads_insight_selling_point_material_list` 返回的 `itemList[].materialID`。
 
 ### Top Ads Library 配置
 
@@ -69,18 +69,18 @@
 
 当 `Target` 为 `top_ads_library_material_detail` 时使用这些参数。
 
-* **Material ID** `library_material_id`：（必填）由 `top_ads_library` 返回的素材 ID。
+* **Material ID** `library_material_id`：（必填）使用 `top_ads_library` 返回的 `itemList[].materialID`。
 
 ## Targets
 
 | Target | 说明 | 计费 |
 | --- | --- | --- |
-| `top_ads_insight` | 采集 Top Ads Insight 初始页面数据：概览、创意方法、分类，以及前几个分类下的卖点行。 | 0.002$ / fetched item |
+| `top_ads_insight` | 采集 Top Ads Insight 初始页面数据：Data Insight 概览、Creative Approach 公式、Selling Point Analysis 分类，以及前几个分类下的 Top 20 selling points。 | 0.002$ / fetched item |
 | `top_ads_insight_creative_approach` | 采集创意方法公式。 | 0.002$ / item |
 | `top_ads_insight_selling_point_analysis` | 采集卖点分类。 | 0.002$ / item |
 | `top_ads_insight_top20_selling_points` | 采集指定分类下的卖点。 | 0.002$ / item |
 | `top_ads_insight_formula_material_list` | 按公式采集 Top Ads Insight 素材列表。 | 0.002$ / item |
-| `top_ads_insight_selling_point_material_list` | 按卖点采集 Top Ads Insight 素材列表。 | 0.002$ / item |
+| `top_ads_insight_selling_point_material_list` | 按卖点采集 Top Ads Insight 的 Selling Point Analysis 素材列表。 | 0.002$ / item |
 | `top_ads_insight_material_detail` | 采集单个 Top Ads Insight 素材详情。 | 0.002$ / time |
 | `top_ads_library` | 使用官方筛选项搜索 Top Ads Library 素材。 | 0.002$ / item |
 | `top_ads_library_material_detail` | 采集单个 Top Ads Library 素材详情。 | 0.002$ / time |
