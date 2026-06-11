@@ -56,7 +56,7 @@ A more robust implementation is to use [Message Queuing](https://en.wikipedia.or
 
 ---
 
-### ⚙️ Top Ads Insight Settings
+### ⚙️ Top Ads Insight Settings (`top_ads_insight`)
 
 These settings are only used when `Target` is set to `top_ads_insight`.
 
@@ -69,7 +69,7 @@ The `top_ads_insight` target mirrors the initial Top Ads Insight page load. It r
 
 ---
 
-### ⚙️ Creative Approach Settings
+### ⚙️ Top Ads Insight - Creative Approach Settings (`top_ads_insight_creative_approach`)
 
 These settings are only used when `Target` is set to `top_ads_insight_creative_approach`.
 
@@ -82,7 +82,7 @@ Use `formulaList[].id` from this target as `insight_formula_material_formula_id`
 
 ---
 
-### ⚙️ Selling Point Analysis Settings
+### ⚙️ Top Ads Insight - Selling Point Analysis Settings (`top_ads_insight_selling_point_analysis`)
 
 These settings are only used when `Target` is set to `top_ads_insight_selling_point_analysis`.
 
@@ -95,7 +95,7 @@ Use `SellingPoints[].categoryName` from this target as `insight_top20_category` 
 
 ---
 
-### ⚙️ Top 20 Selling Points Settings
+### ⚙️ Top Ads Insight - Top 20 Selling Points Settings (`top_ads_insight_top20_selling_points`)
 
 These settings are only used when `Target` is set to `top_ads_insight_top20_selling_points`.
 
@@ -107,7 +107,7 @@ These settings are only used when `Target` is set to `top_ads_insight_top20_sell
 
 ---
 
-### ⚙️ Creative Approach Materials Settings
+### ⚙️ Top Ads Insight - Creative Approach Materials Settings (`top_ads_insight_formula_material_list`)
 
 These settings are only used when `Target` is set to `top_ads_insight_formula_material_list`.
 
@@ -123,7 +123,7 @@ Use `itemList[].materialID` from this target as `insight_detail_material_id` whe
 
 ---
 
-### ⚙️ Selling Point Analysis Materials Settings
+### ⚙️ Top Ads Insight - Selling Point Analysis Materials Settings (`top_ads_insight_selling_point_material_list`)
 
 These settings are only used when `Target` is set to `top_ads_insight_selling_point_material_list`.
 
@@ -139,7 +139,7 @@ Use `itemList[].materialID` from this target as `insight_detail_material_id` whe
 
 ---
 
-### ⚙️ Top Ads Insight Material Detail Settings
+### ⚙️ Top Ads Insight - Material Detail Settings (`top_ads_insight_material_detail`)
 
 These settings are only used when `Target` is set to `top_ads_insight_material_detail`.
 
@@ -147,7 +147,7 @@ These settings are only used when `Target` is set to `top_ads_insight_material_d
 
 ---
 
-### ⚙️ Top Ads Library Settings
+### ⚙️ Top Ads Library Settings (`top_ads_library`)
 
 These settings are only used when `Target` is set to `top_ads_library`.
 
@@ -165,7 +165,7 @@ Use `itemList[].materialID` from this target as `library_material_id` when fetch
 
 ---
 
-### ⚙️ Top Ads Library Material Detail Settings
+### ⚙️ Top Ads Library - Material Detail Settings (`top_ads_library_material_detail`)
 
 These settings are only used when `Target` is set to `top_ads_library_material_detail`.
 
@@ -181,7 +181,7 @@ The Actor returns a dataset of items. The structure of each item depends on the 
 
 ---
 
-### 📊 Top Ads Insight
+### 📊 Top Ads Insight (`top_ads_insight`)
 
 ```json
 {
@@ -272,9 +272,95 @@ The Actor returns a dataset of items. The structure of each item depends on the 
 
 ---
 
-### 📊 Top Ads Insight - Material List
+### 📊 Top Ads Insight - Creative Approach (`top_ads_insight_creative_approach`)
 
-Used by `top_ads_insight_formula_material_list` and `top_ads_insight_selling_point_material_list`.
+```json
+{
+    "BaseResp": {
+        "StatusCode": 0,
+        "StatusMessage": ""
+    },
+    "formulaList": [
+        {
+            "clickRate": 0.01532804205489521,
+            "content": [
+                "Function/Attribute",
+                "Physical product/Commodity",
+                "Applicable Scenarios",
+                "Target Audience"
+            ],
+            "engagementRate": 0.003626492592307972,
+            "id": "[Function/Attribute, Physical product/Commodity, Applicable Scenarios, Target Audience]",
+            "postNumPct": 0.10424275523091102,
+            "videoView": "725058423",
+            "videoView6sRate": 0.1357802376705856
+        },
+        ... /* omit */
+    ]
+}
+```
+
+---
+
+### 📊 Top Ads Insight - Selling Point Analysis (`top_ads_insight_selling_point_analysis`)
+
+```json
+{
+    "BaseResp": {
+        "StatusCode": 0,
+        "StatusMessage": ""
+    },
+    "SellingPoints": [
+        {
+            "categoryName": "Target Audience",
+            "clickRate": 0.015131855660077015,
+            "clickRateWow": -0.021820344372670414,
+            "engagementRate": 0.006421364107410872,
+            "engagementRateWow": 0.037459146764485536,
+            "postNumPct": 0.8560120182585081,
+            "sellingPointName": "",
+            "videoView": "7085131950",
+            "videoView6sRate": 0.12949835648438418,
+            "videoView6sRateWow": -0.013653260524311877,
+            "videoViewWow": 0.47982782334909313
+        },
+        ... /* omit */
+    ]
+}
+```
+
+---
+
+### 📊 Top Ads Insight - Top 20 Selling Points (`top_ads_insight_top20_selling_points`)
+
+```json
+{
+    "BaseResp": {
+        "StatusCode": 0,
+        "StatusMessage": ""
+    },
+    "SellingPoints": [
+        {
+            "categoryName": "Target Audience",
+            "clickRate": 0.013211661428313998,
+            "clickRateWow": -0.04245137306068203,
+            "engagementRate": 0.0031889771656263264,
+            "engagementRateWow": -0.06709534547129498,
+            "postNumPct": 0.10068180504997976,
+            "sellingPointName": "Homeowners and Maintenance Enthusiasts",
+            "videoView": "836561023",
+            "videoView6sRate": 0.14181924418919528,
+            "videoView6sRateWow": -0.03342331175429736,
+            "videoViewWow": 0.5779036729199662
+        },
+        ... /* omit */
+    ]
+}
+```
+
+---
+
+### 📊 Top Ads Insight - Creative Approach Materials (`top_ads_insight_formula_material_list`)
 
 ```json
 {
@@ -325,7 +411,114 @@ Used by `top_ads_insight_formula_material_list` and `top_ads_insight_selling_poi
 
 ---
 
-### 📊 Top Ads Library
+### 📊 Top Ads Insight - Selling Point Analysis Materials (`top_ads_insight_selling_point_material_list`)
+
+```json
+{
+    "BaseResp": {
+        "StatusCode": 0,
+        "StatusMessage": ""
+    },
+    "itemList": [
+        {
+            "brandName": "",
+            "clickRate": 0,
+            "commentCnt": "0",
+            "countryCodeList": [
+                "SA"
+            ],
+            "ctrRank": 0.66,
+            "engagementRate": 0.00036005527335007106,
+            "industry": "18000000000",
+            "landingPage": "",
+            "likeCnt": "0",
+            "materialID": "7637823224530026516",
+            "shareCnt": "0",
+            "title": "احمي اثاثك مع بخاخ نانو فور لايف",
+            "videoInfo": {
+                "cover": "https://p19-common-sign.tiktokcdn.com/tos-alisg-p-0051c001-sg/oYDfXgPVQCNf9IE6JfbAGX7DJCJwwA7ULDAgFT~tplv-photomode-zoomcover-tcm:720:720.avif?dr=16670&refresh_token=c241a2c4&x-expires=1781740800&x-signature=jSOpVOxf%2FV4pFCjlNMt%2FS%2BmJ5x4%3D&t=e8257cf9&ps=933b5bde&shp=c8b38fb9&shcp=c8b38fb9&idc=my2",
+                "duration": 21.316,
+                "height": "1280",
+                "vid": "v10033g50000d7vg15fog65tgqjqdts0",
+                "video_url": {
+                    "720p": "https://v16m-default.tiktokcdn.com/357714a02f5b0c88d30efdab610f5721/6a2ac293/video/tos/alisg/tos-alisg-ve-0051c001-sg/oQ9eM839ZQTAief79APAWK67AHtfAgahfMwlkS/?a=0&bti=NTU4QDM1NGA%3D&&bt=1801&ft=cApXJCz7ThWH9Rr9LGZmo0P&mime_type=video_mp4&rc=aGY7Z2k4ODlmODNoPDU8NUBpM3d0dHc5cjhqOjMzODYzNEA0NV4tMTJeNS4xMzYxMWNiYSNwYWdkMmRjLnNhLS1kMC1zcw%3D%3D&vvpl=1&l=202606111613186D2D026BFB0E135F48DD&btag=e000b8000"
+                },
+                "width": "720"
+            },
+            "videoView": "411048",
+            "videoView6sRank": 0.73,
+            "videoView6sRate": 0
+        },
+        ... /* omit */
+    ],
+    "pagination": {
+        "hasMore": true,
+        "page": "1",
+        "size": "2",
+        "total": "3"
+    }
+}
+```
+
+---
+
+### 📊 Top Ads Insight - Material Detail (`top_ads_insight_material_detail`)
+
+```json
+{
+    "BaseResp": {
+        "StatusCode": 0,
+        "StatusMessage": ""
+    },
+    "itemInfo": {
+        "brandName": "",
+        "clickRate": 0,
+        "commentCnt": "0",
+        "countryCodeList": [
+            "SA"
+        ],
+        "ctrRank": 0.66,
+        "engagementRate": 0.00036005527335007106,
+        "industry": "18000000000",
+        "keyFrameInfo": [
+            {
+                "click_cnt": 0.2391304347826087,
+                "convert_cnt": 0,
+                "play_retain_cnt": 1,
+                "retain_ctr": 0.03143979992854591,
+                "retain_cvr": 0,
+                "second": "0"
+            },
+            ... /* omit */
+        ],
+        "landingPage": "https://nano4life-sa.com/ar?utm_source=tiktok&utm_medium=paid&utm_id=__CAMPAIGN_ID__&utm_campaign=__CAMPAIGN_NAME__",
+        "likeCnt": "147",
+        "materialID": "7637823224530026516",
+        "objective": [
+            5
+        ],
+        "shareCnt": "1",
+        "title": "احمي اثاثك مع بخاخ نانو فور لايف",
+        "videoInfo": {
+            "cover": "https://p16-common-sign.tiktokcdn.com/tos-alisg-p-0051c001-sg/oYDfXgPVQCNf9IE6JfbAGX7DJCJwwA7ULDAgFT~tplv-noop.image?dr=18692&refresh_token=1d20876a&x-expires=1781187224&x-signature=qHW3teAeUrAmlZhcBCYIx54A9zY%3D&t=9276707c&ps=14f1eb3e&shp=9e36835a&shcp=317596d8&idc=my2&VideoID=v10033g50000d7vg15fog65tgqjqdts0",
+            "duration": 21.316,
+            "height": "1280",
+            "vid": "v10033g50000d7vg15fog65tgqjqdts0",
+            "video_url": {
+                "720p": "https://v16m-default.tiktokcdn.com/b3c2444addc896d7993d3618eda3b1a5/6a2ac298/video/tos/alisg/tos-alisg-ve-0051c001-sg/oQ9eM839ZQTAief79APAWK67AHtfAgahfMwlkS/?a=0&bti=NTU4QDM1NGA%3D&&bt=1801&ft=cApXJCz7ThWH4Rr9LGZmo0P&mime_type=video_mp4&rc=aGY7Z2k4ODlmODNoPDU8NUBpM3d0dHc5cjhqOjMzODYzNEA0NV4tMTJeNS4xMzYxMWNiYSNwYWdkMmRjLnNhLS1kMC1zcw%3D%3D&vvpl=1&l=20260611161323C6AD417FBB95886B2486&btag=e000b8000"
+            },
+            "width": "720"
+        },
+        "videoView": "411048",
+        "videoView6sRank": 0.73,
+        "videoView6sRate": 0
+    }
+}
+```
+
+---
+
+### 📊 Top Ads Library (`top_ads_library`)
 
 ```json
 {
@@ -382,9 +575,7 @@ Used by `top_ads_insight_formula_material_list` and `top_ads_insight_selling_poi
 
 ---
 
-### 📊 Material Detail
-
-Used by `top_ads_insight_material_detail` and `top_ads_library_material_detail`.
+### 📊 Top Ads Library - Material Detail (`top_ads_library_material_detail`)
 
 ```json
 {
