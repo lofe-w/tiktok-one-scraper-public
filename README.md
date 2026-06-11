@@ -31,7 +31,7 @@ Scrape TikTok One inspiration and insight data through TikTok One backend APIs. 
 These settings are used when `Target` is `top_ads_insight`.
 
 * **Industry label** `insight_industry_label`: (Required) Official industry label. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-one-scraper-public/refs/heads/main/options/top_ads_insight_industry.json)
-* **Country code** `insight_country_code`: (Required) Official country or region filter. Use an empty value for `All regions`. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-one-scraper-public/refs/heads/main/options/top_ads_insight_country.json)
+* **Country code** `insight_country_code`: (Required) Official country or region filter. Use an empty value for `All`. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-one-scraper-public/refs/heads/main/options/top_ads_insight_country.json)
 * **Time range** `insight_time_range`: (Required) Publication time range. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-one-scraper-public/refs/heads/main/options/top_ads_insight_time_range.json)
 * **Sort by** `insight_order_field`: (Required) Ranking metric. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-one-scraper-public/refs/heads/main/options/top_ads_insight_order_field.json)
 
