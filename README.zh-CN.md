@@ -2,23 +2,25 @@
 
 [English README](https://github.com/lofe-w/tiktok-one-scraper-public/blob/main/README.md)
 
-All In One！这是面向 TikTok One 当前官方 Top Ads 页面的专用采集器。你可以稳定获取 Top Ads Insight 指标、Creative Approach 创意方法公式、Selling Point Analysis 卖点分析、Top Ads 素材列表、Top Ads Library 搜索结果和素材详情等结构化数据，用于营销洞察、竞品研究和创意分析。
+All In One！这是面向 TikTok One 当前官方创意洞察页面的专用采集器。你可以获取 Top Ads Insight 指标、Creative Approach 创意方法公式、Selling Point Analysis 卖点分析、Top Ads Library 搜索结果，以及 Custom User Insight 人群特征、兴趣和相关视频等结构化数据，用于营销洞察、竞品研究和创意分析。
 
 [Start Now (On Apify)](https://apify.com/doliz/tiktok-one-scraper)
 
 ## ✨ 核心功能
 
 * **⚡️ 快速高效**：直接调用 TikTok One 后端接口，避开缓慢的页面自动化操作，节省时间和平台成本。
-* **🎯 All-in-one Top Ads 采集**：一个 Actor 覆盖当前已实现的 TikTok One 官方 Top Ads 工作流，包括：
+* **🎯 All-in-one TikTok One 采集**：一个 Actor 覆盖当前已实现的 TikTok One 官方数据页面，包括：
     * [Top Ads Insight](https://ads.tiktok.com/creative/inspiration/top-ads/insight)
     * [Top Ads Library](https://ads.tiktok.com/creative/inspiration/top-ads/library)
+    * [Custom User Insight](https://ads.tiktok.com/creative/inspiration/user-insight)
     * Creative Approach 创意方法公式
     * Selling Point Analysis 卖点分析分类
     * 按分类获取 Top 20 selling points
     * Creative Approach 素材列表
     * Selling Point Analysis 素材列表
     * 素材详情查询
-* **🔎 强大的筛选能力**：使用 TikTok One 当前产品暴露的官方行业、国家/地区、时间范围、广告目标、点赞分位和排序字段。
+    * 人群特征、关键词、Hashtag、详情、相关关键词和相关视频
+* **🔎 强大的筛选能力**：使用 TikTok One 当前产品暴露的官方行业、国家/地区、时间范围、广告目标、点赞分位、人群、语言、兴趣和排序字段。
 * **📦 结构化 JSON 输出**：返回适合看板、数据清洗、竞品监控和广告研究流程使用的机器可读数据。
 * **🧭 与官方当前范围对齐**：本 Actor 跟随 TikTok One 当前 Top Ads 产品范围，只暴露已经实现且可运行的 target。
 
@@ -48,7 +50,7 @@ All In One！这是面向 TikTok One 当前官方 Top Ads 页面的专用采集�
 
 * **Target** `target`：（必填）选择 TikTok One 数据源。不同 target 会使用下方不同的配置项。
 
-  可选值：`top_ads_insight`、`top_ads_insight_creative_approach`、`top_ads_insight_selling_point_analysis`、`top_ads_insight_top20_selling_points`、`top_ads_insight_formula_material_list`、`top_ads_insight_selling_point_material_list`、`top_ads_insight_material_detail`、`top_ads_library`、`top_ads_library_material_detail`。
+  可选值：`top_ads_insight`、`top_ads_insight_creative_approach`、`top_ads_insight_selling_point_analysis`、`top_ads_insight_top20_selling_points`、`top_ads_insight_formula_material_list`、`top_ads_insight_selling_point_material_list`、`top_ads_insight_material_detail`、`top_ads_library`、`top_ads_library_material_detail`、`custom_user_insight`、`custom_user_insight_ai_summary`、`custom_user_insight_demographic`、`custom_user_insight_keyword_list`、`custom_user_insight_hashtag_list`、`custom_user_insight_keyword_detail`、`custom_user_insight_hashtag_detail`、`custom_user_insight_keyword_videos`、`custom_user_insight_hashtag_videos`、`custom_user_insight_related_keywords`。
 
 * **Cookies** `cookies`：（必填）登录 `ads.tiktok.com` 上的 TikTok One 后获取的认证 Cookie。获取方式：
 
@@ -170,6 +172,27 @@ All In One！这是面向 TikTok One 当前官方 Top Ads 页面的专用采集�
 当 `Target` 设置为 `top_ads_library_material_detail` 时使用这些参数。
 
 * **Material ID** `library_material_id`：（必填）使用 `top_ads_library` 返回的 `itemList[].materialID`。
+
+---
+
+### ⚙️ Custom User Insight 设置 (`custom_user_insight*`)
+
+当 `Target` 以 `custom_user_insight` 开头时使用这些参数。
+
+* **Interests** `custom_user_insight_interest`：（必填）官方兴趣标签。[Options](https://raw.githubusercontent.com/lofe-w/tiktok-one-scraper-public/refs/heads/main/options/custom_user_insight_interest.json)
+* **Age** `custom_user_insight_age`：（可选）人群年龄，留空表示全部。[Options](https://raw.githubusercontent.com/lofe-w/tiktok-one-scraper-public/refs/heads/main/options/custom_user_insight_age.json)
+* **Gender** `custom_user_insight_gender`：（可选）人群性别，留空表示全部。[Options](https://raw.githubusercontent.com/lofe-w/tiktok-one-scraper-public/refs/heads/main/options/custom_user_insight_gender.json)
+* **Language** `custom_user_insight_language`：（可选）人群语言，留空表示全部。[Options](https://raw.githubusercontent.com/lofe-w/tiktok-one-scraper-public/refs/heads/main/options/custom_user_insight_language.json)
+* **Region** `custom_user_insight_region`：（可选）人群国家或地区，留空表示全部。[Options](https://raw.githubusercontent.com/lofe-w/tiktok-one-scraper-public/refs/heads/main/options/custom_user_insight_region.json)
+* **Rank type** `custom_user_insight_rank_type`：关键词和 Hashtag 列表/详情使用的排行类型。
+* **Keyword category** `custom_user_insight_keyword_category`：关键词列表的 All、Brand 或 Product 分类。
+* **TikTok trending topics** `custom_user_insight_is_related`：使用 TikTok 热门话题，而不是所选兴趣。
+* **Keyword** `custom_user_insight_keyword`：关键词详情、视频和相关关键词 target 使用的关键词。
+* **Hashtag** `custom_user_insight_hashtag`：Hashtag 详情和视频 target 使用的 Hashtag。
+* **Video sort by** `custom_user_insight_video_order_field`：按播放量或点赞数排序。
+* **Video region** `custom_user_insight_video_region`：关键词或 Hashtag 视频的地区筛选。[Options](https://raw.githubusercontent.com/lofe-w/tiktok-one-scraper-public/refs/heads/main/options/custom_user_insight_region.json)
+
+`custom_user_insight` 返回 AI summary、Audience demographic、Keyword list 和 Hashtag list。某个面板暂时不可用时，Actor 会保留其它成功数据，并通过 `partialErrors` 标识失败部分。
 
 ---
 
@@ -631,6 +654,12 @@ Actor 会返回 dataset items。每个 item 的结构取决于你选择的 `targ
 
 ---
 
+### 📊 Custom User Insight (`custom_user_insight`)
+
+聚合 target 返回 `aiSummary`、`demographic`、`keywordList` 和 `hashtagList`。后续 target 直接返回对应的 TikTok One API 响应：关键词/Hashtag 视频位于 `videos[]`，详情指标位于 `keyword` 或 `hashtag`，相关关键词位于 `relatedKeywordList[]`。成功但为空的列表不会触发 item 计费。
+
+---
+
 ## 💰 使用成本与计费
 
 Pricing model: [Pay per event](https://docs.apify.com/platform/actors/publishing/monetize/pay-per-event)
@@ -648,6 +677,16 @@ Pricing model: [Pay per event](https://docs.apify.com/platform/actors/publishing
 | [Top Ads Insight - Material Detail](https://ads.tiktok.com/creative/inspiration/top-ads/insight) | 0.002$ / time |
 | [Top Ads Library](https://ads.tiktok.com/creative/inspiration/top-ads/library) | 0.002$ / item |
 | [Top Ads Library - Material Detail](https://ads.tiktok.com/creative/inspiration/top-ads/library) | 0.002$ / time |
+| [Custom User Insight](https://ads.tiktok.com/creative/inspiration/user-insight) | 0.002$ / fetched item |
+| [Custom User Insight - AI Summary](https://ads.tiktok.com/creative/inspiration/user-insight) | 0.002$ / time |
+| [Custom User Insight - Demographic](https://ads.tiktok.com/creative/inspiration/user-insight) | 0.002$ / time |
+| [Custom User Insight - Keyword List](https://ads.tiktok.com/creative/inspiration/user-insight) | 0.002$ / item |
+| [Custom User Insight - Hashtag List](https://ads.tiktok.com/creative/inspiration/user-insight) | 0.002$ / item |
+| [Custom User Insight - Keyword Detail](https://ads.tiktok.com/creative/inspiration/user-insight) | 0.002$ / time |
+| [Custom User Insight - Hashtag Detail](https://ads.tiktok.com/creative/inspiration/user-insight) | 0.002$ / time |
+| [Custom User Insight - Keyword Videos](https://ads.tiktok.com/creative/inspiration/user-insight) | 0.002$ / item |
+| [Custom User Insight - Hashtag Videos](https://ads.tiktok.com/creative/inspiration/user-insight) | 0.002$ / item |
+| [Custom User Insight - Related Keywords](https://ads.tiktok.com/creative/inspiration/user-insight) | 0.002$ / item |
 
 未知或未支持的 target 会在发起上游请求和计费前被拒绝。
 
@@ -661,4 +700,5 @@ Pricing model: [Pay per event](https://docs.apify.com/platform/actors/publishing
 * TikTok One 网站结构及其内部 API 可能随时变化。
 * TikTok One 请求需要来自 `ads.tiktok.com` 的有效登录 Cookie；过期、无效、被限流或无权限的 Cookie 可能导致上游请求失败。
 * 部分 Top Ads Insight 接口需要浏览器侧请求签名；Actor 会在内部处理这些签名，但是否成功访问仍取决于 TikTok One 是否接受账号会话。
+* Custom User Insight 的关键词列表在部分人群下可能成功返回空列表。
 * 请负责任地使用本 Actor，并遵守 Apify Terms of Service。

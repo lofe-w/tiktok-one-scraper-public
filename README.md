@@ -2,23 +2,25 @@
 
 [中文 README](https://github.com/lofe-w/tiktok-one-scraper-public/blob/main/README.zh-CN.md)
 
-All In One! A focused scraper for the official TikTok One Top Ads surfaces available today. Reliably extract structured Top Ads Insight metrics, creative approach formulas, selling point analysis, Top Ads material lists, Top Ads Library search results, and material details for marketing intelligence, competitive research, and creative analysis.
+All In One! A focused scraper for the official TikTok One creative inspiration surfaces available today. Reliably extract structured Top Ads Insight metrics, creative approach formulas, selling point analysis, Top Ads Library search results, Custom User Insight audience demographics, audience interests, and related videos for marketing intelligence, competitive research, and creative analysis.
 
 [Start Now (On Apify)](https://apify.com/doliz/tiktok-one-scraper)
 
 ## ✨ Key Features
 
 * **⚡️ Fast & Efficient**: Bypasses slow UI interactions by calling TikTok One backend APIs directly, saving time and platform costs.
-* **🎯 All-in-one Top Ads Scraping**: One Actor covering the currently implemented official TikTok One Top Ads workflows, including:
+* **🎯 All-in-one TikTok One Scraping**: One Actor covering the currently implemented official TikTok One workflows, including:
     * [Top Ads Insight](https://ads.tiktok.com/creative/inspiration/top-ads/insight)
     * [Top Ads Library](https://ads.tiktok.com/creative/inspiration/top-ads/library)
+    * [Custom User Insight](https://ads.tiktok.com/creative/inspiration/user-insight)
     * Creative Approach formulas
     * Selling Point Analysis categories
     * Top 20 selling points by category
     * Creative Approach material lists
     * Selling Point Analysis material lists
     * Material detail lookup
-* **🔎 Powerful Filtering**: Use TikTok One's official industry, country, time range, objective, likes percentile, and sorting fields where the current product exposes them.
+    * Audience demographic, keyword, hashtag, detail, related keyword, and related video lookups
+* **🔎 Powerful Filtering**: Use TikTok One's official industry, country, time range, objective, likes percentile, audience, language, region, interest, and sorting fields where the current product exposes them.
 * **📦 Structured JSON Output**: Get clean, machine-readable data ready for dashboards, enrichment pipelines, competitive monitoring, and ad research workflows.
 * **🧭 Officially Aligned Scope**: This Actor follows the current TikTok One Top Ads product scope and only exposes implemented, runnable targets.
 
@@ -48,7 +50,7 @@ A more robust implementation is to use [Message Queuing](https://en.wikipedia.or
 
 * **Target** `target`: (Required) Select the TikTok One data source. Your choice determines which settings below are used.
 
-  One of `top_ads_insight`, `top_ads_insight_creative_approach`, `top_ads_insight_selling_point_analysis`, `top_ads_insight_top20_selling_points`, `top_ads_insight_formula_material_list`, `top_ads_insight_selling_point_material_list`, `top_ads_insight_material_detail`, `top_ads_library`, `top_ads_library_material_detail`.
+  One of `top_ads_insight`, `top_ads_insight_creative_approach`, `top_ads_insight_selling_point_analysis`, `top_ads_insight_top20_selling_points`, `top_ads_insight_formula_material_list`, `top_ads_insight_selling_point_material_list`, `top_ads_insight_material_detail`, `top_ads_library`, `top_ads_library_material_detail`, `custom_user_insight`, `custom_user_insight_ai_summary`, `custom_user_insight_demographic`, `custom_user_insight_keyword_list`, `custom_user_insight_hashtag_list`, `custom_user_insight_keyword_detail`, `custom_user_insight_hashtag_detail`, `custom_user_insight_keyword_videos`, `custom_user_insight_hashtag_videos`, `custom_user_insight_related_keywords`.
 
 * **Cookies** `cookies`: (Required) Your authentication cookies after logging into TikTok One on `ads.tiktok.com`. Way to obtain:
 
@@ -170,6 +172,27 @@ Use `itemList[].materialID` from this target as `library_material_id` when fetch
 These settings are only used when `Target` is set to `top_ads_library_material_detail`.
 
 * **Material ID** `library_material_id`: (Required) Use `itemList[].materialID` from `top_ads_library`.
+
+---
+
+### ⚙️ Custom User Insight Settings (`custom_user_insight*`)
+
+These settings are used when `Target` starts with `custom_user_insight`.
+
+* **Interests** `custom_user_insight_interest`: (Required) Official interest label. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-one-scraper-public/refs/heads/main/options/custom_user_insight_interest.json)
+* **Age** `custom_user_insight_age`: (Optional) Audience age filters. Leave empty for all ages. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-one-scraper-public/refs/heads/main/options/custom_user_insight_age.json)
+* **Gender** `custom_user_insight_gender`: (Optional) Audience gender filters. Leave empty for all genders. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-one-scraper-public/refs/heads/main/options/custom_user_insight_gender.json)
+* **Language** `custom_user_insight_language`: (Optional) Audience language filters. Leave empty for all languages. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-one-scraper-public/refs/heads/main/options/custom_user_insight_language.json)
+* **Region** `custom_user_insight_region`: (Optional) Audience region filters. Leave empty for all regions. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-one-scraper-public/refs/heads/main/options/custom_user_insight_region.json)
+* **Rank type** `custom_user_insight_rank_type`: (Required for keyword and hashtag lists/details) One of `Most popular`, `Growing`, `Top new`, or `Weekly popular`.
+* **Keyword category** `custom_user_insight_keyword_category`: (Optional for keyword list) `All`, `Brand`, or `Product`.
+* **TikTok trending topics** `custom_user_insight_is_related`: (Optional) Use the TikTok trending topics tab instead of the selected audience interest tab.
+* **Keyword** `custom_user_insight_keyword`: (Required for keyword detail, keyword videos, and related keywords) Use `keywordList[].keyword` from `custom_user_insight_keyword_list`.
+* **Hashtag** `custom_user_insight_hashtag`: (Required for hashtag detail and hashtag videos) Use `hashtagList[].hashtagName` from `custom_user_insight_hashtag_list`.
+* **Video sort by** `custom_user_insight_video_order_field`: (Required for keyword and hashtag videos) `Video views` or `Likes`.
+* **Video region** `custom_user_insight_video_region`: (Optional for keyword and hashtag videos) Video country or region filters. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-one-scraper-public/refs/heads/main/options/custom_user_insight_region.json)
+
+The `custom_user_insight` target mirrors the initial Custom User Insight page load. It returns AI summary, audience demographic, keyword list, and hashtag list responses. If one panel is temporarily unavailable, successful panels are preserved and the response includes a sanitized `partialErrors` entry. Follow-up targets expose the page's detail drawer, related keywords, and related videos.
 
 ---
 
@@ -631,6 +654,66 @@ The Actor returns a dataset of items. The structure of each item depends on the 
 
 ---
 
+### 📊 Custom User Insight (`custom_user_insight`)
+
+```json
+{
+    "aiSummary": {
+        "BaseResp": {
+            "StatusCode": 0,
+            "StatusMessage": ""
+        },
+        "AudienceFeature": {},
+        "TrendingKeywords": {},
+        "EmergingHashtags": {}
+    },
+    "demographic": {
+        "BaseResp": {
+            "StatusCode": 0,
+            "StatusMessage": ""
+        },
+        "lastUpdateTime": "1781049600",
+        "age": [],
+        "gender": [],
+        "countryCode": [],
+        "language": [],
+        "industryLabel": []
+    },
+    "keywordList": {
+        "BaseResp": {
+            "StatusCode": 0,
+            "StatusMessage": ""
+        },
+        "keywordList": [],
+        "lastUpdateTime": "0"
+    },
+    "hashtagList": {
+        "BaseResp": {
+            "StatusCode": 0,
+            "StatusMessage": ""
+        },
+        "hashtagList": [
+            {
+                "hashtagName": "motorradtour",
+                "publishCnt": "69387",
+                "videoViews": "1205015293",
+                "videoViewsSelected": "1849118"
+            }
+        ]
+    }
+}
+```
+
+### 📊 Custom User Insight Follow-up Targets
+
+`custom_user_insight_ai_summary`, `custom_user_insight_demographic`, `custom_user_insight_keyword_list`, `custom_user_insight_hashtag_list`, `custom_user_insight_keyword_detail`, `custom_user_insight_hashtag_detail`, `custom_user_insight_keyword_videos`, `custom_user_insight_hashtag_videos`, and `custom_user_insight_related_keywords` return the corresponding TikTok One API response directly.
+
+Keyword and hashtag video targets return `videos[]`; hashtag and keyword detail targets return metric series under `hashtag` or `keyword`; related keywords returns `relatedKeywordList[]`.
+
+A successful empty list is returned normally and does not trigger an item fetch charge.
+
+---
+
 ## 💰 Cost of Use & Pricing
 
 Pricing model: [Pay per event](https://docs.apify.com/platform/actors/publishing/monetize/pay-per-event)
@@ -648,6 +731,16 @@ The trigger logic of the event is the number of items that return the result.
 | [Top Ads Insight - Material Detail](https://ads.tiktok.com/creative/inspiration/top-ads/insight) | 0.002$ / time |
 | [Top Ads Library](https://ads.tiktok.com/creative/inspiration/top-ads/library) | 0.002$ / item |
 | [Top Ads Library - Material Detail](https://ads.tiktok.com/creative/inspiration/top-ads/library) | 0.002$ / time |
+| [Custom User Insight](https://ads.tiktok.com/creative/inspiration/user-insight) | 0.002$ / fetched item |
+| [Custom User Insight - AI Summary](https://ads.tiktok.com/creative/inspiration/user-insight) | 0.002$ / time |
+| [Custom User Insight - Demographic](https://ads.tiktok.com/creative/inspiration/user-insight) | 0.002$ / time |
+| [Custom User Insight - Keyword List](https://ads.tiktok.com/creative/inspiration/user-insight) | 0.002$ / item |
+| [Custom User Insight - Hashtag List](https://ads.tiktok.com/creative/inspiration/user-insight) | 0.002$ / item |
+| [Custom User Insight - Keyword Detail](https://ads.tiktok.com/creative/inspiration/user-insight) | 0.002$ / time |
+| [Custom User Insight - Hashtag Detail](https://ads.tiktok.com/creative/inspiration/user-insight) | 0.002$ / time |
+| [Custom User Insight - Keyword Videos](https://ads.tiktok.com/creative/inspiration/user-insight) | 0.002$ / item |
+| [Custom User Insight - Hashtag Videos](https://ads.tiktok.com/creative/inspiration/user-insight) | 0.002$ / item |
+| [Custom User Insight - Related Keywords](https://ads.tiktok.com/creative/inspiration/user-insight) | 0.002$ / item |
 
 Unknown or unsupported targets are rejected before any upstream request or charge.
 
@@ -661,4 +754,5 @@ If you encounter any issues or have feature requests, please use the **Issues** 
 * The structure of the TikTok One website and its internal APIs may change at any time.
 * TikTok One requests require valid logged-in cookies from `ads.tiktok.com`; expired, invalid, rate-limited, or unauthorized cookies can cause upstream failures.
 * Some Top Ads Insight endpoints require browser-side request signatures. The Actor handles these internally, but successful access still depends on TikTok One accepting the account session.
+* Custom User Insight keyword lists may legitimately return an empty list for some audiences even when the upstream request succeeds.
 * Please use this Actor responsibly and in accordance with the Apify Terms of Service.
