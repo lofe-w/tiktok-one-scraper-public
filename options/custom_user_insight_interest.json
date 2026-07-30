@@ -1,0 +1,87 @@
+[
+    {
+        "id": "11000000000",
+        "value": "11000000000",
+        "label": "Vehicle & Transportation"
+    },
+    {
+        "id": "14000000000",
+        "value": "14000000000",
+        "label": "Beauty & Personal Care"
+    },
+    {
+        "id": "25000000000",
+        "value": "25000000000",
+        "label": "Tech & Electronics"
+    },
+    {
+        "id": "27000000000",
+        "value": "27000000000",
+        "label": "Education"
+    },
+    {
+        "id": "26000000000",
+        "value": "26000000000",
+        "label": "Life Services"
+    },
+    {
+        "id": "20000000000",
+        "value": "20000000000",
+        "label": "Apps"
+    },
+    {
+        "id": "15000000000",
+        "value": "15000000000",
+        "label": "News & Entertainment"
+    },
+    {
+        "id": "22000000000",
+        "value": "22000000000",
+        "label": "Apparel & Accessories"
+    },
+    {
+        "id": "12000000000",
+        "value": "12000000000",
+        "label": "Baby, Kids & Maternity"
+    },
+    {
+        "id": "19000000000",
+        "value": "19000000000",
+        "label": "Pets"
+    },
+    {
+        "id": "18000000000",
+        "value": "18000000000",
+        "label": "Household Products"
+    },
+    {
+        "id": "10000000000",
+        "value": "10000000000",
+        "label": "Food & Beverage"
+    },
+    {
+        "id": "21000000000",
+        "value": "21000000000",
+        "label": "Home Improvement"
+    },
+    {
+        "id": "17000000000",
+        "value": "17000000000",
+        "label": "Travel"
+    },
+    {
+        "id": "13000000000",
+        "value": "13000000000",
+        "label": "Financial Services"
+    },
+    {
+        "id": "28000000000",
+        "value": "28000000000",
+        "label": "Sports & Outdoor"
+    },
+    {
+        "id": "23000000000",
+        "value": "23000000000",
+        "label": "Games"
+    }
+]

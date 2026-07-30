@@ -1,0 +1,82 @@
+[
+    {
+        "id": "en",
+        "value": "en",
+        "label": "English"
+    },
+    {
+        "id": "es",
+        "value": "es",
+        "label": "Spanish"
+    },
+    {
+        "id": "ar",
+        "value": "ar",
+        "label": "Arabic"
+    },
+    {
+        "id": "vi",
+        "value": "vi",
+        "label": "Vietnamese"
+    },
+    {
+        "id": "th",
+        "value": "th",
+        "label": "Thai"
+    },
+    {
+        "id": "de",
+        "value": "de",
+        "label": "German"
+    },
+    {
+        "id": "id",
+        "value": "id",
+        "label": "Indonesian"
+    },
+    {
+        "id": "pt",
+        "value": "pt",
+        "label": "Portuguese"
+    },
+    {
+        "id": "fr",
+        "value": "fr",
+        "label": "French"
+    },
+    {
+        "id": "ms",
+        "value": "ms",
+        "label": "Malay"
+    },
+    {
+        "id": "nl",
+        "value": "nl",
+        "label": "Dutch"
+    },
+    {
+        "id": "ja",
+        "value": "ja",
+        "label": "Japanese"
+    },
+    {
+        "id": "it",
+        "value": "it",
+        "label": "Italian"
+    },
+    {
+        "id": "ro",
+        "value": "ro",
+        "label": "Romanian"
+    },
+    {
+        "id": "zh-Hant",
+        "value": "zh-Hant",
+        "label": "Chinese - Traditional"
+    },
+    {
+        "id": "ko",
+        "value": "ko",
+        "label": "Korean"
+    }
+]
