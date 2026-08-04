@@ -658,6 +658,8 @@ Actor 会返回 dataset items。每个 item 的结构取决于你选择的 `targ
 
 聚合 target 返回 `aiSummary`、`demographic`、`keywordList` 和 `hashtagList`。后续 target 直接返回对应的 TikTok One API 响应：关键词/Hashtag 视频位于 `videos[]`，详情指标位于 `keyword` 或 `hashtag`，相关关键词位于 `relatedKeywordList[]`。成功但为空的列表不会触发 item 计费。
 
+对于已经明确识别的 TikTok One 结果，例如限流（`40100`/HTTP 429）、登录失效（`38001001`）和明确网络失败，Actor Run 会正常结束，不产生 Dataset 输出或 fetch 计费；Run 状态会在可用时展示经过脱敏的官方错误码和信息。Actor 不会自动重试这些请求，重试时机由用户自行决定。
+
 ---
 
 ## 💰 使用成本与计费
