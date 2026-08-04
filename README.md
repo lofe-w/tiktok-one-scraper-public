@@ -712,10 +712,12 @@ Keyword and hashtag video targets return `videos[]`; hashtag and keyword detail 
 
 A successful empty list is returned normally and does not trigger an item fetch charge.
 
+Successful data and user-actionable warnings/errors both return Dataset output.
+
 Recognized TikTok One outcomes such as rate limiting (`40100`/HTTP 429), invalid login (`38001001`), and explicit
-network failure complete the Actor Run normally without Dataset output or fetch charge. The Run status contains a
-sanitized upstream code/message when available. These outcomes are not retried automatically; retry timing remains
-under your control.
+network failure complete the Actor Run normally and return one non-chargeable Dataset item containing a sanitized
+code/message. The Run status contains the same user-facing outcome. These outcomes are not retried automatically;
+retry timing remains under your control.
 
 ---
 
