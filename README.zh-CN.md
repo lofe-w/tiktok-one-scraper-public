@@ -660,6 +660,24 @@ Actor 会返回 dataset items。每个 item 的结构取决于你选择的 `targ
 
 成功数据和需要用户处理的 Warn/Error 都会返回 Dataset Output。
 
+当一个已通过校验的成功结果恰好包含 1 个计费 item 时，Actor 会在计费完成后执行一次独立、只读的
+Cookie 观察。如果观察结果明确，原业务响应会增加以下顶层保留元数据：
+
+```json
+{
+    "_actor": {
+        "cookie_status": "authenticated | invalid",
+        "message": "该次观察对应的用户提示"
+    }
+}
+```
+
+`authenticated` 只表示 TikTok 在该时刻接受了此 Cookie 访问 Actor 的账号认证探针，不保证所有 target、
+权限、地区或浏览器签名请求都可用。`invalid` 表示 TikTok 返回了已核验的登录失效信号。如果探针超时、
+失败或返回未知结构，状态为未知，Actor 会省略 `_actor`，成功业务输出保持不变。0 item 和多 item 结果不做
+这项观察。探针不会产生 fetch 计费，也不会重试业务请求。`_actor` 是 Actor 元数据的保留命名空间，不能
+当作 TikTok 业务响应字段使用。
+
 对于已经明确识别的 TikTok One 结果，例如限流（`40100`/HTTP 429）、登录失效（`38001001`）和明确网络失败，Actor Run 会正常结束，并返回一个包含脱敏错误码/信息且不触发 fetch 计费的 Dataset item；Run 状态会展示相同的用户提示。Actor 不会自动重试这些请求，重试时机由用户自行决定。
 
 ---

@@ -714,6 +714,26 @@ A successful empty list is returned normally and does not trigger an item fetch 
 
 Successful data and user-actionable warnings/errors both return Dataset output.
 
+When a validated success contains exactly one billable item, the Actor performs one separate, read-only Cookie
+observation after charging. If that observation is definitive, the original business response gains this reserved
+top-level metadata:
+
+```json
+{
+    "_actor": {
+        "cookie_status": "authenticated | invalid",
+        "message": "A user-facing explanation of this observation"
+    }
+}
+```
+
+`authenticated` means only that TikTok accepted the Cookie for the Actor's account-authentication probe at that
+moment; it does not guarantee every target, permission, region, or browser-signed request. `invalid` means TikTok
+returned its verified invalid-login signal. If the probe times out, fails, or returns an unfamiliar shape, the status
+is unknown and `_actor` is omitted so the successful business output is unchanged. Zero-item and multi-item results
+skip this observation. The probe does not create a fetch charge or retry the business request. `_actor` is reserved
+for Actor metadata and must not be treated as a TikTok business-response field.
+
 Recognized TikTok One outcomes such as rate limiting (`40100`/HTTP 429), invalid login (`38001001`), and explicit
 network failure complete the Actor Run normally and return one non-chargeable Dataset item containing a sanitized
 code/message. The Run status contains the same user-facing outcome. These outcomes are not retried automatically;
