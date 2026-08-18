@@ -1,28 +1,45 @@
-# TikTok One Scraper
-
 [中文 README](https://github.com/lofe-w/tiktok-one-scraper-public/blob/main/README.zh-CN.md)
 
-All In One! A focused scraper for the official TikTok One creative inspiration surfaces available today. Reliably extract structured Top Ads Insight metrics, creative approach formulas, selling point analysis, Top Ads Library search results, Custom User Insight audience demographics, audience interests, and related videos for marketing intelligence, competitive research, and creative analysis.
+**TikTok One Scraper** extracts official TikTok One Top Ads and audience insights as structured JSON. Search Top Ads by brand, product, or creative keyword; analyze ad metrics, creative approaches, and selling points; and discover audience demographics, popular or growing keywords, hashtags, and related videos.
 
 [Start Now (On Apify)](https://apify.com/doliz/tiktok-one-scraper)
 
-## ✨ Key Features
+## What can you scrape from TikTok One?
 
-* **⚡️ Fast & Efficient**: Bypasses slow UI interactions by calling TikTok One backend APIs directly, saving time and platform costs.
-* **🎯 All-in-one TikTok One Scraping**: One Actor covering the currently implemented official TikTok One workflows, including:
-    * [Top Ads Insight](https://ads.tiktok.com/creative/inspiration/top-ads/insight)
-    * [Top Ads Library](https://ads.tiktok.com/creative/inspiration/top-ads/library)
-    * [Custom User Insight](https://ads.tiktok.com/creative/inspiration/user-insight)
-    * Creative Approach formulas
-    * Selling Point Analysis categories
-    * Top 20 selling points by category
-    * Creative Approach material lists
-    * Selling Point Analysis material lists
-    * Material detail lookup
-    * Audience demographic, keyword, hashtag, detail, related keyword, and related video lookups
-* **🔎 Powerful Filtering**: Use TikTok One's official industry, country, time range, objective, likes percentile, audience, language, region, interest, and sorting fields where the current product exposes them.
-* **📦 Structured JSON Output**: Get clean, machine-readable data ready for dashboards, enrichment pipelines, competitive monitoring, and ad research workflows.
-* **🧭 Officially Aligned Scope**: This Actor follows the current TikTok One Top Ads product scope and only exposes implemented, runnable targets.
+* **Top Ads keyword search**: find ads by brand, product, or creative keyword, then filter by industry, country, time range, objective, and likes percentile, and sort by a performance metric.
+* **Top Ads creative intelligence**: collect overview metrics, Creative Approach formulas, Selling Point Analysis categories, top selling points, matching materials, and material details.
+* **Audience insights and trends**: for selected audience interests, extract demographics, popular, growing, new, or weekly-popular keywords and hashtags, plus related terms and videos.
+* **Automation-ready output**: export official TikTok One responses as structured Dataset items for dashboards, competitive monitoring, enrichment pipelines, and scheduled research.
+
+The Actor calls TikTok One backend APIs directly instead of automating the browser UI. It covers the currently implemented [Top Ads Insight](https://ads.tiktok.com/creative/inspiration/top-ads/insight), [Top Ads Library](https://ads.tiktok.com/creative/inspiration/top-ads/library), and [Custom User Insight](https://ads.tiktok.com/creative/inspiration/user-insight) workflows.
+
+## How to scrape TikTok One data
+
+1. Open the Actor on Apify and choose a `target`.
+2. Add cookies from a TikTok account that can access TikTok One.
+3. Set the target-specific filters. For Top Ads Library, `library_search_word` accepts a brand, product, or creative keyword.
+4. Run the Actor and export the Dataset as JSON, CSV, Excel, XML, or through the Apify API.
+
+## TikTok One scraper use cases
+
+* Research competitors' high-performing TikTok ads and creative patterns.
+* Compare creative approaches, selling points, engagement, and view metrics by market or industry.
+* Discover growing audience keywords, hashtags, and related videos for content planning.
+* Build recurring ad-intelligence and audience-research datasets without manual UI work.
+
+## TikTok One scraper FAQ
+
+### Can I search TikTok Top Ads with a custom keyword?
+
+Yes. The `top_ads_library` target exposes `library_search_word`, which accepts a brand, product, or creative keyword. Custom User Insight is different: its detail targets use keywords returned by `custom_user_insight_keyword_list`; they do not submit an arbitrary custom-audience report.
+
+### Is this a general TikTok trends scraper?
+
+It covers TikTok One audience trends, including popular or growing keywords, hashtags, and related videos for selected audience interests. It does not claim general TikTok song, creator, or viral-video rankings. For official Creative Center trending hashtags and trending videos, use the [TikTok Creative Center Scraper](https://apify.com/doliz/tiktok-creative-center-scraper).
+
+### Does the Actor require login cookies?
+
+Yes. TikTok One currently requires an authenticated account for these official surfaces. Cookies are marked as a secret in the Actor input, so Apify stores them encrypted and masks them in the Console.
 
 ## 💡 Best practices
 
@@ -780,6 +797,6 @@ If you encounter any issues or have feature requests, please use the **Issues** 
 * This Actor is not an official TikTok product and is not affiliated with or endorsed by TikTok, Inc.
 * The structure of the TikTok One website and its internal APIs may change at any time.
 * TikTok One requests require valid logged-in cookies from `ads.tiktok.com`; expired, invalid, rate-limited, or unauthorized cookies can cause upstream failures.
-* Top Ads requests use local request signing followed by direct HTTP requests. Successful access still depends on TikTok One accepting the account session, region, and network context.
+* Top Ads requests use local `X-Bogus` and `X-Gnarly` signing followed by direct HTTP requests. Successful access still depends on TikTok One accepting the account session, region, and network context.
 * Custom User Insight keyword lists may legitimately return an empty list for some audiences even when the upstream request succeeds.
 * Please use this Actor responsibly and in accordance with the Apify Terms of Service.

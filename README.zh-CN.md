@@ -1,28 +1,45 @@
-# TikTok One Scraper
-
 [English README](https://github.com/lofe-w/tiktok-one-scraper-public/blob/main/README.md)
 
-All In One！这是面向 TikTok One 当前官方创意洞察页面的专用采集器。你可以获取 Top Ads Insight 指标、Creative Approach 创意方法公式、Selling Point Analysis 卖点分析、Top Ads Library 搜索结果，以及 Custom User Insight 人群特征、兴趣和相关视频等结构化数据，用于营销洞察、竞品研究和创意分析。
+**TikTok One Scraper** 可将官方 TikTok One Top Ads 和人群洞察采集为结构化 JSON。你可以按品牌、产品或创意关键词搜索 Top Ads，分析广告指标、创意方法和卖点，并发现人群特征、热门或增长关键词、Hashtag 和相关视频。
 
 [Start Now (On Apify)](https://apify.com/doliz/tiktok-one-scraper)
 
-## ✨ 核心功能
+## 可以采集哪些 TikTok One 数据？
 
-* **⚡️ 快速高效**：直接调用 TikTok One 后端接口，避开缓慢的页面自动化操作，节省时间和平台成本。
-* **🎯 All-in-one TikTok One 采集**：一个 Actor 覆盖当前已实现的 TikTok One 官方数据页面，包括：
-    * [Top Ads Insight](https://ads.tiktok.com/creative/inspiration/top-ads/insight)
-    * [Top Ads Library](https://ads.tiktok.com/creative/inspiration/top-ads/library)
-    * [Custom User Insight](https://ads.tiktok.com/creative/inspiration/user-insight)
-    * Creative Approach 创意方法公式
-    * Selling Point Analysis 卖点分析分类
-    * 按分类获取 Top 20 selling points
-    * Creative Approach 素材列表
-    * Selling Point Analysis 素材列表
-    * 素材详情查询
-    * 人群特征、关键词、Hashtag、详情、相关关键词和相关视频
-* **🔎 强大的筛选能力**：使用 TikTok One 当前产品暴露的官方行业、国家/地区、时间范围、广告目标、点赞分位、人群、语言、兴趣和排序字段。
-* **📦 结构化 JSON 输出**：返回适合看板、数据清洗、竞品监控和广告研究流程使用的机器可读数据。
-* **🧭 与官方当前范围对齐**：本 Actor 跟随 TikTok One 当前 Top Ads 产品范围，只暴露已经实现且可运行的 target。
+* **Top Ads 关键词搜索**：按品牌、产品或创意关键词查找广告，按行业、国家/地区、时间、广告目标和点赞分位筛选，并按表现指标排序。
+* **Top Ads 创意洞察**：获取总览指标、Creative Approach 公式、Selling Point Analysis 分类、热门卖点、匹配素材和素材详情。
+* **人群洞察与趋势**：针对所选人群兴趣，采集人群特征、热门、增长、新增或周热门关键词与 Hashtag，以及相关词和视频。
+* **适合自动化的输出**：将官方 TikTok One 响应写入结构化 Dataset，用于看板、竞品监控、数据丰富和定时研究。
+
+Actor 直接调用 TikTok One 后端接口，不依赖浏览器页面自动化。目前覆盖 [Top Ads Insight](https://ads.tiktok.com/creative/inspiration/top-ads/insight)、[Top Ads Library](https://ads.tiktok.com/creative/inspiration/top-ads/library) 和 [Custom User Insight](https://ads.tiktok.com/creative/inspiration/user-insight) 已实现的工作流。
+
+## 如何采集 TikTok One 数据？
+
+1. 在 Apify 打开 Actor，并选择一个 `target`。
+2. 填入能够访问 TikTok One 的账号 Cookie。
+3. 设置该 target 的筛选条件；Top Ads Library 的 `library_search_word` 支持品牌、产品或创意关键词。
+4. 运行 Actor，并通过 JSON、CSV、Excel、XML 或 Apify API 导出 Dataset。
+
+## TikTok One 采集器适用场景
+
+* 研究竞品的高表现 TikTok 广告与创意模式。
+* 按市场或行业比较创意方法、卖点、互动和播放指标。
+* 发现增长中的人群关键词、Hashtag 和相关视频，用于内容策划。
+* 无需手动操作页面，持续建立广告洞察与人群研究数据集。
+
+## TikTok One 采集器常见问题
+
+### 可以使用自定义关键词搜索 TikTok Top Ads 吗？
+
+可以。`top_ads_library` 的 `library_search_word` 支持品牌、产品或创意关键词。Custom User Insight 不同：其详情 target 使用 `custom_user_insight_keyword_list` 返回的关键词，不会提交任意自定义人群报告。
+
+### 这是通用的 TikTok Trends Scraper 吗？
+
+它覆盖 TikTok One 的人群趋势，包括指定兴趣人群的热门或增长关键词、Hashtag 和相关视频；不宣称提供全站热门歌曲、创作者或病毒视频排名。若要采集官方 Creative Center 热门 Hashtag 和热门视频，请使用 [TikTok Creative Center Scraper](https://apify.com/doliz/tiktok-creative-center-scraper)。
+
+### 是否需要登录 Cookie？
+
+需要。TikTok One 当前要求账号登录后访问这些官方页面。Actor 已将 Cookie 标记为 secret，Apify 会加密存储并在 Console 中隐藏其内容。
 
 ## 💡 最佳实践
 
