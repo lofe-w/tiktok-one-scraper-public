@@ -153,7 +153,7 @@ These settings are only used when `Target` is set to `top_ads_insight_material_d
 
 These settings are only used when `Target` is set to `top_ads_library`.
 
-* **Industry label** `library_industry_label`: (Optional) Industry label ID. Leave empty for all industries. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-one-scraper-public/refs/heads/main/options/top_ads_library_industry.json)
+* **Industry labels** `library_industry_label_list`: (Optional) Industry label IDs. Select one or more values; leave empty for all industries. Multiple values are sent as one native filter request. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-one-scraper-public/refs/heads/main/options/top_ads_library_industry.json)
 * **Country code** `library_country_code`: (Optional) Country or region code. Leave empty for all countries and regions. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-one-scraper-public/refs/heads/main/options/top_ads_library_country.json)
 * **Time range** `library_time_range`: (Required) Publication time range. [Options](https://raw.githubusercontent.com/lofe-w/tiktok-one-scraper-public/refs/heads/main/options/top_ads_library_time_range.json)
 * **Search word** `library_search_word`: (Optional) Search by brand, product, or creative keyword.

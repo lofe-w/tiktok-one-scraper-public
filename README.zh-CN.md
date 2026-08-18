@@ -153,7 +153,7 @@ All In One！这是面向 TikTok One 当前官方创意洞察页面的专用采�
 
 当 `Target` 设置为 `top_ads_library` 时使用这些参数。
 
-* **Industry label** `library_industry_label`：（可选）行业标签 ID。留空表示全部行业。[Options](https://raw.githubusercontent.com/lofe-w/tiktok-one-scraper-public/refs/heads/main/options/top_ads_library_industry.json)
+* **Industry labels** `library_industry_label_list`：（可选）行业标签 ID。可选择一个或多个值；留空表示全部行业。多个值会作为官网原生筛选在一次请求中提交。[Options](https://raw.githubusercontent.com/lofe-w/tiktok-one-scraper-public/refs/heads/main/options/top_ads_library_industry.json)
 * **Country code** `library_country_code`：（可选）国家或地区代码。留空表示全部国家/地区。[Options](https://raw.githubusercontent.com/lofe-w/tiktok-one-scraper-public/refs/heads/main/options/top_ads_library_country.json)
 * **Time range** `library_time_range`：（必填）发布时间范围。[Options](https://raw.githubusercontent.com/lofe-w/tiktok-one-scraper-public/refs/heads/main/options/top_ads_library_time_range.json)
 * **Search word** `library_search_word`：（可选）按品牌、产品或创意关键词搜索。
