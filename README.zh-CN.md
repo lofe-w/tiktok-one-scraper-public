@@ -673,7 +673,7 @@ Cookie 观察。如果观察结果明确，原业务响应会增加以下顶层�
 ```
 
 `authenticated` 只表示 TikTok 在该时刻接受了此 Cookie 访问 Actor 的账号认证探针，不保证所有 target、
-权限、地区或浏览器签名请求都可用。`invalid` 表示 TikTok 返回了已核验的登录失效信号。如果探针超时、
+权限、地区或签名请求都可用。`invalid` 表示 TikTok 返回了已核验的登录失效信号。如果探针超时、
 失败或返回未知结构，状态为未知，Actor 会省略 `_actor`，成功业务输出保持不变。0 item 和多 item 结果不做
 这项观察。探针不会产生 fetch 计费，也不会重试业务请求。`_actor` 是 Actor 元数据的保留命名空间，不能
 当作 TikTok 业务响应字段使用。
@@ -721,6 +721,6 @@ Pricing model: [Pay per event](https://docs.apify.com/platform/actors/publishing
 * 本 Actor 不是 TikTok 官方产品，也不隶属于 TikTok, Inc. 或获得其背书。
 * TikTok One 网站结构及其内部 API 可能随时变化。
 * TikTok One 请求需要来自 `ads.tiktok.com` 的有效登录 Cookie；过期、无效、被限流或无权限的 Cookie 可能导致上游请求失败。
-* 部分 Top Ads Insight 接口需要浏览器侧请求签名；Actor 会在内部处理这些签名，但是否成功访问仍取决于 TikTok One 是否接受账号会话。
+* Top Ads 请求使用本地请求签名后通过 HTTP 直连；是否成功访问仍取决于 TikTok One 是否接受账号会话、地区和网络上下文。
 * Custom User Insight 的关键词列表在部分人群下可能成功返回空列表。
 * 请负责任地使用本 Actor，并遵守 Apify Terms of Service。

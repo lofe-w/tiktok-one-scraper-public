@@ -728,7 +728,7 @@ top-level metadata:
 ```
 
 `authenticated` means only that TikTok accepted the Cookie for the Actor's account-authentication probe at that
-moment; it does not guarantee every target, permission, region, or browser-signed request. `invalid` means TikTok
+moment; it does not guarantee every target, permission, region, or signed request. `invalid` means TikTok
 returned its verified invalid-login signal. If the probe times out, fails, or returns an unfamiliar shape, the status
 is unknown and `_actor` is omitted so the successful business output is unchanged. Zero-item and multi-item results
 skip this observation. The probe does not create a fetch charge or retry the business request. `_actor` is reserved
@@ -780,6 +780,6 @@ If you encounter any issues or have feature requests, please use the **Issues** 
 * This Actor is not an official TikTok product and is not affiliated with or endorsed by TikTok, Inc.
 * The structure of the TikTok One website and its internal APIs may change at any time.
 * TikTok One requests require valid logged-in cookies from `ads.tiktok.com`; expired, invalid, rate-limited, or unauthorized cookies can cause upstream failures.
-* Some Top Ads Insight endpoints require browser-side request signatures. The Actor handles these internally, but successful access still depends on TikTok One accepting the account session.
+* Top Ads requests use local request signing followed by direct HTTP requests. Successful access still depends on TikTok One accepting the account session, region, and network context.
 * Custom User Insight keyword lists may legitimately return an empty list for some audiences even when the upstream request succeeds.
 * Please use this Actor responsibly and in accordance with the Apify Terms of Service.
