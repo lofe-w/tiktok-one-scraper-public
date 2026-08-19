@@ -1,17 +1,19 @@
 [中文 README](https://github.com/lofe-w/tiktok-one-scraper-public/blob/main/README.zh-CN.md)
 
-**TikTok One Scraper** extracts official TikTok One Top Ads and audience insights as structured JSON. Search Top Ads by brand, product, or creative keyword; analyze ad metrics, creative approaches, and selling points; and discover audience demographics, popular or growing keywords, hashtags, and related videos.
+**TikTok One Scraper** extracts official TikTok One creator discovery, Creator Profiles, Top Ads, and audience insights as structured JSON.
 
 [Start Now (On Apify)](https://apify.com/doliz/tiktok-one-scraper)
 
 ## What can you scrape from TikTok One?
 
 * **Top Ads keyword search**: find ads by brand, product, or creative keyword, then filter by industry, country, time range, objective, and likes percentile, and sort by a performance metric.
+* **Creator discovery**: search one explicit page with creator, performance, follower, commercial-readiness, and TikTok Shop performance filters.
+* **Complete Creator Profiles**: retrieve identity, pricing, overview, content performance, trends, videos, commercial performance, e-commerce, and audience demographics for up to 20 AIO Creator IDs.
 * **Top Ads creative intelligence**: collect overview metrics, Creative Approach formulas, Selling Point Analysis categories, top selling points, matching materials, and material details.
 * **Audience insights and trends**: for selected audience interests, extract demographics, popular, growing, new, or weekly-popular keywords and hashtags, plus related terms and videos.
 * **Automation-ready output**: export official TikTok One responses as structured Dataset items for dashboards, competitive monitoring, enrichment pipelines, and scheduled research.
 
-The Actor calls TikTok One backend APIs directly instead of automating the browser UI. It covers the currently implemented [Top Ads Insight](https://ads.tiktok.com/creative/inspiration/top-ads/insight), [Top Ads Library](https://ads.tiktok.com/creative/inspiration/top-ads/library), and [Custom User Insight](https://ads.tiktok.com/creative/inspiration/user-insight) workflows.
+The Actor calls TikTok One backend APIs directly instead of automating the browser UI. It covers [Creator Search](https://ads.tiktok.com/creative/creator/explore), Creator Profile, [Top Ads Insight](https://ads.tiktok.com/creative/inspiration/top-ads/insight), [Top Ads Library](https://ads.tiktok.com/creative/inspiration/top-ads/library), and [Custom User Insight](https://ads.tiktok.com/creative/inspiration/user-insight).
 
 ## How to scrape TikTok One data
 
@@ -67,11 +69,47 @@ A more robust implementation is to use [Message Queuing](https://en.wikipedia.or
 
 * **Target** `target`: (Required) Select the TikTok One data source. Your choice determines which settings below are used.
 
-  One of `top_ads_insight`, `top_ads_insight_creative_approach`, `top_ads_insight_selling_point_analysis`, `top_ads_insight_top20_selling_points`, `top_ads_insight_formula_material_list`, `top_ads_insight_selling_point_material_list`, `top_ads_insight_material_detail`, `top_ads_library`, `top_ads_library_material_detail`, `custom_user_insight`, `custom_user_insight_ai_summary`, `custom_user_insight_demographic`, `custom_user_insight_keyword_list`, `custom_user_insight_hashtag_list`, `custom_user_insight_keyword_detail`, `custom_user_insight_hashtag_detail`, `custom_user_insight_keyword_videos`, `custom_user_insight_hashtag_videos`, `custom_user_insight_related_keywords`.
+  One of `creator_search`, `creator_profile`, `top_ads_insight`, `top_ads_insight_creative_approach`, `top_ads_insight_selling_point_analysis`, `top_ads_insight_top20_selling_points`, `top_ads_insight_formula_material_list`, `top_ads_insight_selling_point_material_list`, `top_ads_insight_material_detail`, `top_ads_library`, `top_ads_library_material_detail`, `custom_user_insight`, `custom_user_insight_ai_summary`, `custom_user_insight_demographic`, `custom_user_insight_keyword_list`, `custom_user_insight_hashtag_list`, `custom_user_insight_keyword_detail`, `custom_user_insight_hashtag_detail`, `custom_user_insight_keyword_videos`, `custom_user_insight_hashtag_videos`, `custom_user_insight_related_keywords`.
 
 * **Cookies** `cookies`: (Required) Your authentication cookies after logging into TikTok One on `ads.tiktok.com`. Way to obtain:
 
   ![](https://github.com/lofe-w/tiktok-one-scraper-public/raw/main/imgs/get_cookie.png)
+
+---
+
+### ⚙️ Creator Search Settings (`creator_search`)
+
+Creator Search sends one comprehensive/keyword search request and returns `matchedCreators`, `recommendedCreators`, and pagination metadata. It never automatically loads another page or follows results into Creator Profile.
+
+* **Search keyword** `creator_search_query`: (Optional) Keyword, handle, nickname, bio topic, or content topic.
+* **Page / limit** `creator_search_page`, `creator_search_limit`: One explicit page; limit is `1` to `24`.
+* **Sort by** `creator_search_sort_by`: Relevance, Followers, Median views, Engagement rate, or Collaboration score. Collaboration score is unavailable in EU TTP.
+* **Creator filters**: countries or regions, follower range, languages, recommendation tags, and expected rate.
+* **Performance filters**: median views, engagement rate, collaboration evaluation, and TikTok Shop GMV/GPM.
+* **Follower filters**: follower country, gender ratio, and age.
+* **Commercial readiness**: previous brand collaborations and Creator Manager status.
+
+The website's separate Creator name-search mode performs multi-region fallback queries and TikTok-user enrichment. This Actor intentionally does not reproduce that hidden cross-query merge.
+
+---
+
+### ⚙️ Creator Profile Settings (`creator_profile`)
+
+* **Creator IDs** `creator_ids`: (Required) One to 20 AIO Creator IDs returned by `creator_search`.
+
+The target resolves each Creator's data region and returns identity, pricing, overview metrics, default all-content performance, trends, recent/featured/branded videos, commercial performance, TikTok Shop data, and audience demographics. It does not paginate videos, fetch similar creators, or perform collaboration actions.
+
+Every input ID produces the same Dataset envelope:
+
+```json
+{
+  "query": {"field": "creatorID", "value": "7241559514216939521"},
+  "ok": true,
+  "response": {"aioCreatorID": "7241559514216939521"}
+}
+```
+
+Unavailable IDs use `ok: false` with a sanitized error. Billing is one fetch per successful profile, not per internal request.
 
 ---
 
@@ -766,6 +804,8 @@ The trigger logic of the event is the number of items that return the result.
 
 | Target | Cost |
 |---|---|
+| `creator_search` | 0.002$ / returned creator |
+| `creator_profile` | 0.002$ / successfully returned profile |
 | [Top Ads Insight](https://ads.tiktok.com/creative/inspiration/top-ads/insight) | 0.002$ / fetched item |
 | [Top Ads Insight - Creative Approach](https://ads.tiktok.com/creative/inspiration/top-ads/insight) | 0.002$ / item |
 | [Top Ads Insight - Selling Point Analysis](https://ads.tiktok.com/creative/inspiration/top-ads/insight) | 0.002$ / item |

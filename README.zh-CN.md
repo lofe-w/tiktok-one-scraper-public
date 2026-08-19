@@ -1,17 +1,19 @@
 [English README](https://github.com/lofe-w/tiktok-one-scraper-public/blob/main/README.md)
 
-**TikTok One Scraper** 可将官方 TikTok One Top Ads 和人群洞察采集为结构化 JSON。你可以按品牌、产品或创意关键词搜索 Top Ads，分析广告指标、创意方法和卖点，并发现人群特征、热门或增长关键词、Hashtag 和相关视频。
+**TikTok One Scraper** 可将官方 TikTok One 创作者发现、Creator Profile、Top Ads 和人群洞察采集为结构化 JSON。
 
 [Start Now (On Apify)](https://apify.com/doliz/tiktok-one-scraper)
 
 ## 可以采集哪些 TikTok One 数据？
 
 * **Top Ads 关键词搜索**：按品牌、产品或创意关键词查找广告，按行业、国家/地区、时间、广告目标和点赞分位筛选，并按表现指标排序。
+* **创作者发现**：使用创作者、表现、粉丝、商业成熟度和 TikTok Shop 表现条件查询一个明确分页。
+* **完整 Creator Profile**：一次查询最多 20 个 AIO Creator ID，返回身份、报价、总览、内容表现、趋势、视频、商业表现、电商和人群特征。
 * **Top Ads 创意洞察**：获取总览指标、Creative Approach 公式、Selling Point Analysis 分类、热门卖点、匹配素材和素材详情。
 * **人群洞察与趋势**：针对所选人群兴趣，采集人群特征、热门、增长、新增或周热门关键词与 Hashtag，以及相关词和视频。
 * **适合自动化的输出**：将官方 TikTok One 响应写入结构化 Dataset，用于看板、竞品监控、数据丰富和定时研究。
 
-Actor 直接调用 TikTok One 后端接口，不依赖浏览器页面自动化。目前覆盖 [Top Ads Insight](https://ads.tiktok.com/creative/inspiration/top-ads/insight)、[Top Ads Library](https://ads.tiktok.com/creative/inspiration/top-ads/library) 和 [Custom User Insight](https://ads.tiktok.com/creative/inspiration/user-insight) 已实现的工作流。
+Actor 直接调用 TikTok One 后端接口，不依赖浏览器页面自动化。目前覆盖 [Creator Search](https://ads.tiktok.com/creative/creator/explore)、Creator Profile、[Top Ads Insight](https://ads.tiktok.com/creative/inspiration/top-ads/insight)、[Top Ads Library](https://ads.tiktok.com/creative/inspiration/top-ads/library) 和 [Custom User Insight](https://ads.tiktok.com/creative/inspiration/user-insight)。
 
 ## 如何采集 TikTok One 数据？
 
@@ -67,11 +69,47 @@ Actor 直接调用 TikTok One 后端接口，不依赖浏览器页面自动化�
 
 * **Target** `target`：（必填）选择 TikTok One 数据源。不同 target 会使用下方不同的配置项。
 
-  可选值：`top_ads_insight`、`top_ads_insight_creative_approach`、`top_ads_insight_selling_point_analysis`、`top_ads_insight_top20_selling_points`、`top_ads_insight_formula_material_list`、`top_ads_insight_selling_point_material_list`、`top_ads_insight_material_detail`、`top_ads_library`、`top_ads_library_material_detail`、`custom_user_insight`、`custom_user_insight_ai_summary`、`custom_user_insight_demographic`、`custom_user_insight_keyword_list`、`custom_user_insight_hashtag_list`、`custom_user_insight_keyword_detail`、`custom_user_insight_hashtag_detail`、`custom_user_insight_keyword_videos`、`custom_user_insight_hashtag_videos`、`custom_user_insight_related_keywords`。
+  可选值：`creator_search`、`creator_profile`、`top_ads_insight`、`top_ads_insight_creative_approach`、`top_ads_insight_selling_point_analysis`、`top_ads_insight_top20_selling_points`、`top_ads_insight_formula_material_list`、`top_ads_insight_selling_point_material_list`、`top_ads_insight_material_detail`、`top_ads_library`、`top_ads_library_material_detail`、`custom_user_insight`、`custom_user_insight_ai_summary`、`custom_user_insight_demographic`、`custom_user_insight_keyword_list`、`custom_user_insight_hashtag_list`、`custom_user_insight_keyword_detail`、`custom_user_insight_hashtag_detail`、`custom_user_insight_keyword_videos`、`custom_user_insight_hashtag_videos`、`custom_user_insight_related_keywords`。
 
 * **Cookies** `cookies`：（必填）登录 `ads.tiktok.com` 上的 TikTok One 后获取的认证 Cookie。获取方式：
 
   ![](https://github.com/lofe-w/tiktok-one-scraper-public/raw/main/imgs/get_cookie.png)
+
+---
+
+### ⚙️ Creator Search 设置 (`creator_search`)
+
+Creator Search 只发送一次综合/关键词查询，返回 `matchedCreators`、`recommendedCreators` 和分页信息；不会自动翻页，也不会继续打开 Creator Profile。
+
+* **搜索词** `creator_search_query`：（可选）关键词、账号名、昵称、简介主题或内容主题。
+* **页码 / 条数** `creator_search_page`、`creator_search_limit`：只查询指定的一页，每页 `1` 至 `24` 条。
+* **排序** `creator_search_sort_by`：相关性、粉丝数、中位播放量、互动率或合作评分；EU TTP 不提供合作评分。
+* **创作者筛选**：国家/地区、粉丝范围、语言、推荐标签和预期报价。
+* **表现筛选**：中位播放量、互动率、合作评价和 TikTok Shop GMV/GPM。
+* **粉丝筛选**：粉丝国家/地区、性别比例和年龄。
+* **商业成熟度**：是否有品牌合作经历、是否由 Creator Manager 管理。
+
+官网单独的“按创作者名称搜索”模式会执行多地区回退查询和 TikTok 用户补充请求；本 Actor 不复制这套隐藏的多查询合并逻辑。
+
+---
+
+### ⚙️ Creator Profile 设置 (`creator_profile`)
+
+* **Creator IDs** `creator_ids`：（必填）`creator_search` 返回的 1 至 20 个 AIO Creator ID。
+
+该 target 会先解析每位创作者的数据区域，再返回身份、报价、总览指标、默认全内容表现、趋势、近期/精选/品牌视频、商业表现、TikTok Shop 数据和人群特征。它不会继续翻页获取视频、查询相似创作者或执行合作操作。
+
+每个输入 ID 都生成结构一致的 Dataset envelope：
+
+```json
+{
+  "query": {"field": "creatorID", "value": "7241559514216939521"},
+  "ok": true,
+  "response": {"aioCreatorID": "7241559514216939521"}
+}
+```
+
+不可用的 ID 返回 `ok: false` 和脱敏错误。计费按成功返回的 Profile 数量计算，而不是按内部请求数量计算。
 
 ---
 
@@ -707,6 +745,8 @@ Pricing model: [Pay per event](https://docs.apify.com/platform/actors/publishing
 
 | Target | 计费 |
 |---|---|
+| `creator_search` | 0.002$ / 返回的创作者 |
+| `creator_profile` | 0.002$ / 成功返回的 Profile |
 | [Top Ads Insight](https://ads.tiktok.com/creative/inspiration/top-ads/insight) | 0.002$ / fetched item |
 | [Top Ads Insight - Creative Approach](https://ads.tiktok.com/creative/inspiration/top-ads/insight) | 0.002$ / item |
 | [Top Ads Insight - Selling Point Analysis](https://ads.tiktok.com/creative/inspiration/top-ads/insight) | 0.002$ / item |
